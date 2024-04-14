@@ -12,10 +12,9 @@ public class playerController : MonoBehaviour
     [SerializeField] int maxJumps;
     [SerializeField] int gravity;
 
-    [SerializeField] int shootDamage;
-    [SerializeField] int shootRate;
-    [SerializeField] int shootDist;
-
+    [SerializeField] float shootRate;
+    [SerializeField] Transform shootPos;
+    [SerializeField] GameObject fireball;
     bool isShooting;
     int jumpedTimes;
 
@@ -24,13 +23,18 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
+
+        if (Input.GetButtonDown("Shoot"))
+        {
+            StartCoroutine(shootFireball());
+        }
     }
 
     void Movement()
@@ -52,5 +56,14 @@ public class playerController : MonoBehaviour
 
         playerVel.y -= gravity * Time.deltaTime;
         controller.Move(playerVel * Time.deltaTime);
+    }
+
+    IEnumerator shootFireball()
+    {
+        isShooting = true;
+        Instantiate(fireball, shootPos.position ,Camera.main.transform.rotation);
+        yield return new WaitForSeconds(shootRate);
+
+        isShooting = false;
     }
 }

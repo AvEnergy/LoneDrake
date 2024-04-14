@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemyAI : MonoBehaviour
+public class enemyAI : MonoBehaviour, iDamage
 {
 
 
@@ -18,6 +18,7 @@ public class enemyAI : MonoBehaviour
 
     [SerializeField] NavMeshAgent agent;
     public GameObject playertemp;
+    [SerializeField] Renderer model;
 
 
 
@@ -34,5 +35,22 @@ public class enemyAI : MonoBehaviour
     void Update()
     {
         agent.SetDestination(playertemp.transform.position);
+    }
+    public void takeDamage(int amount)
+    {
+        hp -= amount;
+
+        StartCoroutine(flashRed());
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator flashRed()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = Color.white;
     }
 }
