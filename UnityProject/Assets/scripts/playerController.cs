@@ -42,14 +42,14 @@ public class playerController : MonoBehaviour
         Movement();
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         //Lets the player shoot the fireball when Lclick. If using the flamethrower, player will not be able to shoot.
-        if (Input.GetButtonDown("Shoot") && !isFlameThrower)
+        if (Input.GetButtonDown("Shoot") && !isFlameThrower && !gameManager.instance.isPaused)
         {
             StartCoroutine(shootFireball());
         }
         //Turns the flamethrower animation on when player clicks Rclick.
         if (Input.GetButtonDown("Fire2"))
         {
-            flamethrower.SetActive(true);
+            //flamethrower.SetActive(true);
             isFlameThrower = true;
         }
         //Raycasting for the flamethrower.
@@ -61,7 +61,7 @@ public class playerController : MonoBehaviour
         if (Input.GetButtonUp("Fire2"))
         {
             isFlameThrower = false;
-            flamethrower.SetActive(false);
+            //flamethrower.SetActive(false);
         }
     }
 
