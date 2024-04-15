@@ -49,7 +49,7 @@ public class playerController : MonoBehaviour
         //Turns the flamethrower animation on when player clicks Rclick.
         if (Input.GetButtonDown("Fire2"))
         {
-            //flamethrower.SetActive(true);
+            flamethrower.SetActive(true);
             isFlameThrower = true;
         }
         //Raycasting for the flamethrower.
@@ -61,7 +61,7 @@ public class playerController : MonoBehaviour
         if (Input.GetButtonUp("Fire2"))
         {
             isFlameThrower = false;
-            //flamethrower.SetActive(false);
+            flamethrower.SetActive(false);
         }
     }
 

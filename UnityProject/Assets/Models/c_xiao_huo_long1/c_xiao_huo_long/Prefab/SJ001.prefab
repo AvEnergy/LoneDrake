@@ -1776,7 +1776,7 @@ MonoBehaviour:
   maxJumps: 2
   gravity: 4
   shootDistance: 8
-  shootRate: 1
+  shootRate: 0.5
   shootDamage: 1
   shootPos: {fileID: 1118858749766219899}
   fireball: {fileID: 3773320128948858985, guid: 43d706df469c4c44c88d65ccd4bda96e, type: 3}
@@ -2048,6 +2048,10 @@ PrefabInstance:
     - target: {fileID: 3086921405146460081, guid: a6e38e28793711247b273f70ff0b3a57, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356623501747379534, guid: a6e38e28793711247b273f70ff0b3a57, type: 3}
+      propertyPath: lengthInSec
+      value: 600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
