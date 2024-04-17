@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, iDamage
 {
     [SerializeField] CharacterController controller;
 
@@ -27,6 +27,7 @@ public class playerController : MonoBehaviour
     bool isShooting;
     bool isFlameThrower;
     int jumpedTimes;
+    int HPOrig;
 
     Vector3 playerVel;
     Vector3 moveDir;
@@ -34,6 +35,8 @@ public class playerController : MonoBehaviour
     void Start()
     {
         flamethrower.SetActive(false);
+        HPOrig = playerHP;
+        updatePlayerUI();
     }
 
     // Update is called once per frame
@@ -110,5 +113,21 @@ public class playerController : MonoBehaviour
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    public void takeDamage(int amount)
+    {
+        playerHP -= amount;
+        updatePlayerUI();
+
+        if (HPOrig <= 0)
+        {
+            //add the you lose screen here.
+        }
+    }
+
+    void updatePlayerUI()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)playerHP / HPOrig;
     }
 }

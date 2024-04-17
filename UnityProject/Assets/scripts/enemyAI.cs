@@ -11,6 +11,7 @@ public class enemyAI : MonoBehaviour, iDamage
 
     [SerializeField] int hp;
     [SerializeField] int speed;
+    [SerializeField] int shootRate;
 
 
 
@@ -19,11 +20,13 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] NavMeshAgent agent;
     public GameObject playertemp;
     [SerializeField] Renderer model;
+    [SerializeField] GameObject FireBall;
+    [SerializeField] Transform shootPos;
 
 
 
 
-
+    bool isShooting;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +38,11 @@ public class enemyAI : MonoBehaviour, iDamage
     void Update()
     {
         agent.SetDestination(playertemp.transform.position);
+        agent.SetDestination(gameManager.instance.player.transform.position);
+        if (!isShooting)
+        {
+            StartCoroutine(shootThem());
+        }
     }
     public void takeDamage(int amount)
     {
@@ -52,5 +60,15 @@ public class enemyAI : MonoBehaviour, iDamage
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = Color.white;
+    }
+
+    IEnumerator shootThem()
+    {
+        isShooting = true;
+
+        Instantiate(FireBall, shootPos.position, transform.rotation);
+
+        yield return new WaitForSeconds(shootRate);
+        isShooting = false;
     }
 }

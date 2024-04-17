@@ -409,6 +409,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1380329328993431577, guid: a033f30105aa4cf41850799b737028fe, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372166407472259952, guid: a033f30105aa4cf41850799b737028fe, type: 3}
+      propertyPath: shootRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3557528616866804376, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_Name
       value: EnemyAI
