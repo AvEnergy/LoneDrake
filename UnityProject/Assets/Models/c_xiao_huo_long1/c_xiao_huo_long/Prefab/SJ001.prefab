@@ -1775,7 +1775,7 @@ MonoBehaviour:
   jumpSpeed: 3
   maxJumps: 2
   gravity: 4
-  shootDistance: 8
+  shootDistance: 4
   shootRate: 0.5
   shootDamage: 1
   shootPos: {fileID: 1118858749766219899}
