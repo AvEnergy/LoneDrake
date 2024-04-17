@@ -11,9 +11,13 @@ public class enemyAI : MonoBehaviour, iDamage
 
     [SerializeField] int hp;
     [SerializeField] int speed;
-    [SerializeField] int shootRate;
+    [SerializeField] float shootRate;
+    [SerializeField] int facetargetSpeed;
 
-
+    [Header("-------Melee Stats------")]
+    [SerializeField] int meleeDmg;
+    [SerializeField] float meleeDist;
+    [SerializeField] float cooldownTime;
 
     [Header("-------Game Objects------")]
 
@@ -27,27 +31,72 @@ public class enemyAI : MonoBehaviour, iDamage
 
 
     bool isShooting;
+    bool meleeAttack;
+    bool playerinRange;
+    Vector3 playerDir;
 
     // Start is called before the first frame update
     void Start()
     {
-        playertemp = GameObject.FindWithTag("Player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(playertemp.transform.position);
-        agent.SetDestination(gameManager.instance.player.transform.position);
-        if (!isShooting)
+        movement();
+    }
+
+    public void movement()
+    {
+        if (playerinRange)
         {
-            StartCoroutine(shootThem());
+            playerDir = gameManager.instance.player.transform.position - transform.position;
+            agent.SetDestination(gameManager.instance.player.transform.position);
+            if (!isShooting)
+            {
+                StartCoroutine(shootThem());
+            }
+            if(!meleeAttack)
+            {
+                Attack();
+            }
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                faceTarget();
+            }
         }
+    }
+
+    //Checks if player is inside the collider 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerinRange = true;
+        }
+    }
+
+
+    //checks if player is outside the collider
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerinRange = false;
+        }
+    }
+
+
+    //Enemy faces the player
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(playerDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * facetargetSpeed);
     }
     public void takeDamage(int amount)
     {
         hp -= amount;
-
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
@@ -70,5 +119,37 @@ public class enemyAI : MonoBehaviour, iDamage
 
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
+    }
+
+    //cooldown when enemy deals melee damage
+    IEnumerator cooldown()
+    {
+        meleeAttack = true;
+        yield return new WaitForSeconds(cooldownTime);
+        meleeAttack = false;
+    }
+
+
+
+    //Function to deal melee damage, still need to figure out a way to assign it to specific enemy
+    public void Attack()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.forward, out hit, meleeDist))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                iDamage dmg = hit.collider.GetComponent<iDamage>();
+                if(hit.transform != transform && dmg != null)
+                {
+                   
+                    dmg.takeDamage(meleeDmg);
+                    StartCoroutine(cooldown());
+                }
+            }
+        }
+       
+           
+       
     }
 }

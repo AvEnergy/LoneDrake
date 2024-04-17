@@ -120,8 +120,9 @@ public class playerController : MonoBehaviour, iDamage
         playerHP -= amount;
         updatePlayerUI();
 
-        if (HPOrig <= 0)
+        if (playerHP <= 0)
         {
+            gameManager.instance.youLoser();
             //add the you lose screen here.
         }
     }
