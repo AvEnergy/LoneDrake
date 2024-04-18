@@ -11,24 +11,24 @@ public class enemyAI : MonoBehaviour, iDamage
 
     [SerializeField] int hp;
     [SerializeField] int speed;
-    [SerializeField] float shootRate;
     [SerializeField] int facetargetSpeed;
 
+    [Header("--------Shooting STATS--------")]
+    [SerializeField] bool CanShootAttack;
+    [SerializeField] float shootRate;
+
     [Header("-------Melee Stats------")]
+    [SerializeField] bool CanMeleeAttack;
     [SerializeField] int meleeDmg;
     [SerializeField] float meleeDist;
     [SerializeField] float cooldownTime;
 
     [Header("-------Game Objects------")]
-
     [SerializeField] NavMeshAgent agent;
     public GameObject playertemp;
     [SerializeField] Renderer model;
     [SerializeField] GameObject FireBall;
     [SerializeField] Transform shootPos;
-
-
-
 
     bool isShooting;
     bool meleeAttack;
@@ -38,7 +38,7 @@ public class enemyAI : MonoBehaviour, iDamage
     // Start is called before the first frame update
     void Start()
     {
-
+        gameManager.instance.updateGameGoal(1);
     }
 
     // Update is called once per frame
@@ -53,11 +53,11 @@ public class enemyAI : MonoBehaviour, iDamage
         {
             playerDir = gameManager.instance.player.transform.position - transform.position;
             agent.SetDestination(gameManager.instance.player.transform.position);
-            if (!isShooting)
+            if (!isShooting && CanShootAttack)
             {
                 StartCoroutine(shootThem());
             }
-            if(!meleeAttack)
+            if(!meleeAttack && CanMeleeAttack)
             {
                 Attack();
             }
@@ -100,6 +100,7 @@ public class enemyAI : MonoBehaviour, iDamage
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
+            gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
         }
     }
@@ -148,8 +149,5 @@ public class enemyAI : MonoBehaviour, iDamage
                 }
             }
         }
-       
-           
-       
     }
 }

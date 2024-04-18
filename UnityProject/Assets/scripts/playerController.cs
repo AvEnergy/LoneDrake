@@ -96,13 +96,12 @@ public class playerController : MonoBehaviour, iDamage
         yield return new WaitForSeconds(shootRate);
     }
 
-    //Simple raycasting. (PROBLEM)
+    //Simple raycasting.
     //Using isShooting here so we can tune the flamethrower to do rapid damage in close range.
     IEnumerator shootFlameThrower()
     {
         isShooting = true;
         RaycastHit hit;
-        //This if check is returning false for some reason and is skipping doing damage to target.
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
         {
             iDamage dmg = hit.collider.GetComponent<iDamage>();
@@ -119,16 +118,22 @@ public class playerController : MonoBehaviour, iDamage
     {
         playerHP -= amount;
         updatePlayerUI();
-
+        playerWasHit();
         if (playerHP <= 0)
         {
             gameManager.instance.youLoser();
-            //add the you lose screen here.
         }
     }
 
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)playerHP / HPOrig;
+    }
+
+    IEnumerator playerWasHit()
+    {
+        gameManager.instance.playerIsHit.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.playerIsHit.SetActive(false);
     }
 }

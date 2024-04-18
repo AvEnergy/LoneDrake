@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -12,12 +13,14 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPaused;
     [SerializeField] GameObject menuWinner;
     [SerializeField] GameObject menuLoser;
+    public TMP_Text enemycountHUD;
+    public GameObject playerIsHit;
     public Image playerHPBar;
 
     public GameObject player;
 
     public bool isPaused;
-    int enemyCount;
+    public int enemyCount;
 
     // Start is called before the first frame update
     void Awake()
@@ -35,7 +38,7 @@ public class gameManager : MonoBehaviour
             menuActive = menuPaused;
             menuActive.SetActive(isPaused);
         }
-
+        enemycountHUD.text = enemyCount.ToString();
     }
     //Stops the game, gives player back mouse. Called when 
     public void statePaused()
