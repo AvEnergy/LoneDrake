@@ -118,7 +118,7 @@ public class playerController : MonoBehaviour, iDamage
     {
         playerHP -= amount;
         updatePlayerUI();
-        playerWasHit();
+        StartCoroutine(playerWasHit());
         if (playerHP <= 0)
         {
             gameManager.instance.youLoser();
@@ -133,7 +133,7 @@ public class playerController : MonoBehaviour, iDamage
     IEnumerator playerWasHit()
     {
         gameManager.instance.playerIsHit.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         gameManager.instance.playerIsHit.SetActive(false);
     }
 }

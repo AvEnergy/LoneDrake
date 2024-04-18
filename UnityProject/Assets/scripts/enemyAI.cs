@@ -12,6 +12,7 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] int hp;
     [SerializeField] int speed;
     [SerializeField] int facetargetSpeed;
+    [SerializeField] bool iKnowWherePlayerIs;
 
     [Header("--------Shooting STATS--------")]
     [SerializeField] bool CanShootAttack;
@@ -29,6 +30,7 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] Renderer model;
     [SerializeField] GameObject FireBall;
     [SerializeField] Transform shootPos;
+    [SerializeField] Color myColor;
 
     bool isShooting;
     bool meleeAttack;
@@ -49,6 +51,10 @@ public class enemyAI : MonoBehaviour, iDamage
 
     public void movement()
     {
+        if (iKnowWherePlayerIs)
+        {
+            agent.SetDestination(gameManager.instance.player.transform.position);
+        }
         if (playerinRange)
         {
             playerDir = gameManager.instance.player.transform.position - transform.position;
@@ -97,6 +103,7 @@ public class enemyAI : MonoBehaviour, iDamage
     public void takeDamage(int amount)
     {
         hp -= amount;
+        agent.SetDestination(gameManager.instance.player.transform.position);
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
@@ -109,7 +116,7 @@ public class enemyAI : MonoBehaviour, iDamage
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        model.material.color = Color.white;
+        model.material.color = myColor;
     }
 
     IEnumerator shootThem()
