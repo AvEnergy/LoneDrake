@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PrototypeScenes/GroupUnityProjectTestForestLevel/ForestLevel.unity
+    guid: 8a5bfc6fca96da24983f09272adc2623
+  - enabled: 1
+    path: Assets/Scenes/PrototypeScenes/DwarfCastle/DwarfCastle.unity
+    guid: 2f9c0d69c6ced3d44aca0dbd99a29521
   m_configObjects: {}
