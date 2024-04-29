@@ -16,6 +16,12 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnPaused();
     }
 
+    public void respawn()
+    {
+        gameManager.instance.playerScript.spawnPlayer();
+        gameManager.instance.stateUnPaused();
+    }
+
     public void quit()
     {
 #if UNITY_EDITOR

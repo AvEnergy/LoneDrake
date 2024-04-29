@@ -40,7 +40,7 @@ public class enemyAI : MonoBehaviour, iDamage
     // Start is called before the first frame update
     void Start()
     {
-        gameManager.instance.updateGameGoal(1);
+       
     }
 
     // Update is called once per frame

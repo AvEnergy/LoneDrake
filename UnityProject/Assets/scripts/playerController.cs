@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, iDamage
@@ -23,6 +24,7 @@ public class playerController : MonoBehaviour, iDamage
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject fireball;
     [SerializeField] GameObject flamethrower;
+    [SerializeField] GameObject FTBurn;
 
     bool isShooting;
     bool isFlameThrower;
@@ -37,6 +39,7 @@ public class playerController : MonoBehaviour, iDamage
         flamethrower.SetActive(false);
         HPOrig = playerHP;
         updatePlayerUI();
+        spawnPlayer();
     }
 
     // Update is called once per frame
@@ -109,6 +112,11 @@ public class playerController : MonoBehaviour, iDamage
             {
                 dmg.takeDamage(shootDamage);
             }
+            else
+            {
+                Instantiate(FTBurn, hit.point, Quaternion.identity);
+            }
+
         }
         yield return new WaitForSeconds(shootRate);
         isShooting = false;
@@ -135,5 +143,14 @@ public class playerController : MonoBehaviour, iDamage
         gameManager.instance.playerIsHit.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         gameManager.instance.playerIsHit.SetActive(false);
+    }
+
+    public void spawnPlayer()
+    {
+        playerHP = HPOrig;
+        updatePlayerUI();
+        controller.enabled = false;
+        transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;
     }
 }
