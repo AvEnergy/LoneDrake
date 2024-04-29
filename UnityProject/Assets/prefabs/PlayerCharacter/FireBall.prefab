@@ -53,6 +53,7 @@ MonoBehaviour:
   speed: 30
   damage: 1
   destroyTime: 2
+  FBhit: {fileID: 2738747534945283929, guid: fed726bfeb7a729499d6caad8d843718, type: 3}
 --- !u!33 &4262475830030755390
 MeshFilter:
   m_ObjectHideFlags: 0

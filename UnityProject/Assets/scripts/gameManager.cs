@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
     public TMP_Text enemycountHUD;
     public GameObject playerIsHit;
     public Image playerHPBar;
+    public Image fireBar;
 
     public GameObject player;
     public GameObject playerSpawnPos;

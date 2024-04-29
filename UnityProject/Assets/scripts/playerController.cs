@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour, iDamage
 
     [Header("-------Player Stats------")]
     [SerializeField] int playerHP;
+    [SerializeField] float playerHeat;
     [SerializeField] int speed;
     [SerializeField] int jumpSpeed;
     [SerializeField] int maxJumps;
@@ -33,11 +34,13 @@ public class playerController : MonoBehaviour, iDamage
 
     Vector3 playerVel;
     Vector3 moveDir;
+    float HeatPlayer;
     // Start is called before the first frame update
     void Start()
     {
         flamethrower.SetActive(false);
         HPOrig = playerHP;
+        HeatPlayer = playerHeat;
         updatePlayerUI();
         spawnPlayer();
     }
@@ -53,7 +56,7 @@ public class playerController : MonoBehaviour, iDamage
             StartCoroutine(shootFireball());
         }
         //Turns the flamethrower animation on when player clicks Rclick.
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && HeatPlayer > 0)
         {
             flamethrower.SetActive(true);
             isFlameThrower = true;
@@ -62,6 +65,10 @@ public class playerController : MonoBehaviour, iDamage
         if (Input.GetButton("Fire2") && !isShooting)
         {
             StartCoroutine(shootFlameThrower());
+            if (HeatPlayer <= 0)
+            {
+                flamethrower.SetActive(false);
+            }
         }
         //Turns the flamethrower animation off when player released Rclick.
         if (Input.GetButtonUp("Fire2"))
@@ -103,6 +110,8 @@ public class playerController : MonoBehaviour, iDamage
     //Using isShooting here so we can tune the flamethrower to do rapid damage in close range.
     IEnumerator shootFlameThrower()
     {
+        HeatPlayer = HeatPlayer - 0.5f;
+        updatePlayerUI();
         isShooting = true;
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out hit, shootDistance))
@@ -136,6 +145,7 @@ public class playerController : MonoBehaviour, iDamage
     void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)playerHP / HPOrig;
+        gameManager.instance.fireBar.fillAmount = HeatPlayer / 100;
     }
 
     IEnumerator playerWasHit()
@@ -152,5 +162,11 @@ public class playerController : MonoBehaviour, iDamage
         controller.enabled = false;
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         controller.enabled = true;
+    }
+
+    public void GetHeat(int heat)
+    {
+        HeatPlayer += heat;
+        updatePlayerUI();
     }
 }
