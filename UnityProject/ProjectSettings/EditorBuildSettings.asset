@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PrototypeScenes/DwarfCastle/DwarfCastle.unity
     guid: 2f9c0d69c6ced3d44aca0dbd99a29521
+  - enabled: 1
+    path: Assets/Scenes/PrototypeScenes/BossLevel/BossLevel.unity
+    guid: 5039c5e96a91a07498cb1a3fff40f497
   m_configObjects: {}
