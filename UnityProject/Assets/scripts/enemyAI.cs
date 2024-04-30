@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,6 +24,9 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] int meleeDmg;
     [SerializeField] float meleeDist;
     [SerializeField] float cooldownTime;
+    [SerializeField] int roamDist;
+    [SerializeField] int pauseTimer;
+    [SerializeField] int viewCone;
 
     [Header("-------Game Objects------")]
     [SerializeField] NavMeshAgent agent;
@@ -30,11 +34,16 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] Renderer model;
     [SerializeField] GameObject FireBall;
     [SerializeField] Transform shootPos;
+    [SerializeField] Transform headPos;
     [SerializeField] Color myColor;
 
     bool isShooting;
     bool meleeAttack;
     bool playerinRange;
+    bool destinationChosen;
+    float angleToPlayer;
+    float stoppingDistOrig;
+    Vector3 startingPos;
     Vector3 playerDir;
 
     // Start is called before the first frame update
@@ -46,8 +55,59 @@ public class enemyAI : MonoBehaviour, iDamage
     // Update is called once per frame
     void Update()
     {
+        if (playerinRange && !canSeePlayer())
+        {
+            StartCoroutine(roam());
+        }
+        else if (!playerinRange)
+        {
+            StartCoroutine(roam());
+        }
+
         movement();
     }
+    IEnumerator roam()
+        {
+            if (!destinationChosen && agent.remainingDistance < 0.05f)
+            {
+                destinationChosen = true;
+                agent.stoppingDistance = 0;
+                yield return new WaitForSeconds(pauseTimer);
+                Vector3 randomPos = Random.insideUnitSphere * roamDist;
+                randomPos += startingPos;
+                NavMeshHit hit;
+                NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
+                agent.SetDestination(hit.position);
+                destinationChosen = false;
+            }
+        }
+    bool canSeePlayer()
+    {
+        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, headPos.position.y, playerDir.z), transform.forward);
+        Debug.Log(angleToPlayer);
+        agent.SetDestination(gameManager.instance.player.transform.position);
+        RaycastHit hit;
+        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        {
+            Debug.Log(hit.transform.name);
+            if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
+            {
+                agent.stoppingDistance = stoppingDistOrig;
+                if (!isShooting)
+                    //StartCoroutine(shoot());              "shoot does not exist in this context"
+
+                    if (agent.remainingDistance <= agent.stoppingDistance)
+                    {
+                        faceTarget();
+                    }
+                return true;
+            }
+        }
+        agent.stoppingDistance = 0;
+        return false;
+    }
+
 
     public void movement()
     {

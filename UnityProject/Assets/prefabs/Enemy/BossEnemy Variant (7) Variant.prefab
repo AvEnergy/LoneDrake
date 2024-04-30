@@ -93,8 +93,16 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6126651102710538658, guid: 613ceb88c12700245a793997bc925eb3, type: 3}
+      propertyPath: roamDist
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6126651102710538658, guid: 613ceb88c12700245a793997bc925eb3, type: 3}
       propertyPath: shootRate
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6126651102710538658, guid: 613ceb88c12700245a793997bc925eb3, type: 3}
+      propertyPath: pauseTimer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6126651102710538658, guid: 613ceb88c12700245a793997bc925eb3, type: 3}
       propertyPath: CanShootAttack
