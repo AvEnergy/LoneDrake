@@ -32,6 +32,7 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] NavMeshAgent agent;
     public GameObject playertemp;
     [SerializeField] Renderer model;
+    [SerializeField] Animator anim;
     [SerializeField] GameObject FireBall;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;

@@ -125,15 +125,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -141,31 +141,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7200043
+      value: 0.2500031
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 58.895515
+      value: 54.500004
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.73285496
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.680385
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -85.748
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5386925969954595052, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -190,7 +190,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3557528616866804376, guid: a033f30105aa4cf41850799b737028fe, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2295087833368498388}
+      addedObject: {fileID: 2600242598848261263}
   m_SourcePrefab: {fileID: 100100000, guid: a033f30105aa4cf41850799b737028fe, type: 3}
 --- !u!4 &4553043362971050558 stripped
 Transform:
@@ -202,24 +202,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3557528616866804376, guid: a033f30105aa4cf41850799b737028fe, type: 3}
   m_PrefabInstance: {fileID: 8497620077551452882}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &2295087833368498388
-SphereCollider:
+--- !u!95 &2600242598848261263
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4950437981066326090}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 35
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Avatar: {fileID: 9000000, guid: 4b31158a600f6cd46b2255fe65387395, type: 3}
+  m_Controller: {fileID: 9100000, guid: 643c1c1268f02aa4ebfcc3ba41a7b9d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
