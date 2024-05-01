@@ -27,6 +27,7 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] int roamDist;
     [SerializeField] int pauseTimer;
     [SerializeField] int viewCone;
+    [SerializeField] int animSpeedTrans;
 
     [Header("-------Game Objects------")]
     [SerializeField] NavMeshAgent agent;
@@ -56,7 +57,8 @@ public class enemyAI : MonoBehaviour, iDamage
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("Blend", agent.velocity.normalized.magnitude);
+        float animSpeed = agent.velocity.normalized.magnitude;
+        anim.SetFloat("Blend", Mathf.Lerp(anim.GetFloat("Blend"), animSpeed, Time.deltaTime * animSpeedTrans));
 
         if (playerinRange && !canSeePlayer())
         {
@@ -171,6 +173,7 @@ public class enemyAI : MonoBehaviour, iDamage
         if (hp <= 0)
         {
             gameManager.instance.updateGameGoal(-1);
+            anim.SetTrigger("Death");
             Destroy(gameObject);
         }
     }
@@ -213,7 +216,7 @@ public class enemyAI : MonoBehaviour, iDamage
                 iDamage dmg = hit.collider.GetComponent<iDamage>();
                 if(hit.transform != transform && dmg != null)
                 {
-                   
+                    anim.SetTrigger("Attack");
                     dmg.takeDamage(meleeDmg);
                     StartCoroutine(cooldown());
                 }
