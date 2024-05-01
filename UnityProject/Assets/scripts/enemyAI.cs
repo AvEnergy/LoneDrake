@@ -56,6 +56,8 @@ public class enemyAI : MonoBehaviour, iDamage
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("Blend", agent.velocity.normalized.magnitude);
+
         if (playerinRange && !canSeePlayer())
         {
             StartCoroutine(roam());
