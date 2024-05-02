@@ -130,6 +130,7 @@ public class enemyAI : MonoBehaviour, iDamage
             }
             if(!meleeAttack && CanMeleeAttack)
             {
+                anim.SetTrigger("Attack");
                 Attack();
             }
             if (agent.remainingDistance <= agent.stoppingDistance)
@@ -208,19 +209,19 @@ public class enemyAI : MonoBehaviour, iDamage
     //Function to deal melee damage, still need to figure out a way to assign it to specific enemy
     public void Attack()
     {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, meleeDist))
+            RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, meleeDist))
         {
             if (hit.collider.CompareTag("Player"))
             {
                 iDamage dmg = hit.collider.GetComponent<iDamage>();
-                if(hit.transform != transform && dmg != null)
+                if (hit.transform != transform && dmg != null)
                 {
-                    anim.SetTrigger("Attack");
                     dmg.takeDamage(meleeDmg);
                     StartCoroutine(cooldown());
                 }
             }
         }
+        
     }
 }

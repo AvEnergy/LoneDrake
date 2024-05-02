@@ -775,6 +775,7 @@ GameObject:
   - component: {fileID: 3085077548759254644}
   - component: {fileID: 6980408917806656022}
   - component: {fileID: -7323105494455421957}
+  - component: {fileID: 5254613477779059674}
   m_Layer: 0
   m_Name: MeleeVariant1
   m_TagString: Untagged
@@ -790,8 +791,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934212114096619192}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69.966385, y: 0.00000023841858, z: 58.489162}
+  m_LocalRotation: {x: -0, y: -0.9826142, z: -0, w: 0.18565926}
+  m_LocalPosition: {x: 70.02514, y: 0.00000023841858, z: 58.63368}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -799,7 +800,7 @@ Transform:
   - {fileID: 6923135819061149274}
   - {fileID: 5933744735833745880}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -158.601, z: 0}
 --- !u!114 &400929974838019076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,17 +815,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 40
   speed: 5
-  facetargetSpeed: 5
+  facetargetSpeed: 100
   iKnowWherePlayerIs: 0
   CanShootAttack: 0
   shootRate: 0
   CanMeleeAttack: 1
   meleeDmg: 10
-  meleeDist: 4
-  cooldownTime: 0
+  meleeDist: 15
+  cooldownTime: 5
   roamDist: 0
   pauseTimer: 0
   viewCone: 5
+  animSpeedTrans: 5
   agent: {fileID: 6980408917806656022}
   playertemp: {fileID: 0}
   model: {fileID: 13700002, guid: 06033faff6ed98c4292f7a342b048834, type: 3}
@@ -895,9 +897,30 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.35
+  m_Height: 1.5
   m_Direction: 1
+  m_Center: {x: 0, y: 0.66, z: 0}
+--- !u!135 &5254613477779059674
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934212114096619192}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1984898550153006730
 GameObject:
@@ -3888,6 +3911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4090234768521164493}
   - component: {fileID: 3949734337530129420}
+  - component: {fileID: 5533986678270306869}
   m_Layer: 0
   m_Name: 'Hamer Dwarf Master '
   m_TagString: Untagged
@@ -4063,6 +4087,29 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0030447852, y: 0.0012945626, z: -0.004837839}
     m_Extent: {x: 0.0007290973, y: 0.004280154, z: 0.0015503718}
   m_DirtyAABB: 0
+--- !u!136 &5533986678270306869
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278172409119673932}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.009002901
+  m_Height: 0.049708977
+  m_Direction: 1
+  m_Center: {x: -0.0369018, y: 0.019113965, z: -0.017142057}
 --- !u!1 &7523264540123885616
 GameObject:
   m_ObjectHideFlags: 0
