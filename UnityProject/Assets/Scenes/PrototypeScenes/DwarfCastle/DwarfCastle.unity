@@ -934,6 +934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeVariant1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5913599503512852722, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

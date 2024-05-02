@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 7138f7e6a3b70e14a8d85e82a9536419, type: 3}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: fireballVol
-      value: 3
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: shootDamage

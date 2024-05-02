@@ -1444,6 +1444,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3214390882237692321, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
+      propertyPath: m_Volume
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214390882237692321, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9051058637641572304, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
       propertyPath: m_Name
       value: Goblin_Ranger_R1
