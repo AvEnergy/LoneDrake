@@ -68,7 +68,7 @@ public class playerController : MonoBehaviour, iDamage
         //Lets the player shoot the fireball when Lclick. If using the flamethrower, player will not be able to shoot.
         if (Input.GetButtonDown("Shoot") && !isFlameThrower && !gameManager.instance.isPaused)
         {
-            aud.PlayOneShot(audFireball);
+            aud.PlayOneShot(audFireball, fireballVol);
             StartCoroutine(shootFireball());
         }
         //Turns the flamethrower animation on when player clicks Rclick.

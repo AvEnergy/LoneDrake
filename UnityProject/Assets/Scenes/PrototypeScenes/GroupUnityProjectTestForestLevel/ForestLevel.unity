@@ -285,6 +285,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400929974838019076, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: audWalk
+      value: 
+      objectReference: {fileID: 8300000, guid: d1a64a93ddb360f40ac44c951df4e90c, type: 3}
     - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 80.28
@@ -456,6 +460,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400929974838019076, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: audWalk
+      value: 
+      objectReference: {fileID: 8300000, guid: d1a64a93ddb360f40ac44c951df4e90c, type: 3}
     - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 77.94677
@@ -513,6 +521,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400929974838019076, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: audWalk
+      value: 
+      objectReference: {fileID: 8300000, guid: d1a64a93ddb360f40ac44c951df4e90c, type: 3}
     - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 66.59
@@ -570,6 +582,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400929974838019076, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: audWalk
+      value: 
+      objectReference: {fileID: 8300000, guid: d1a64a93ddb360f40ac44c951df4e90c, type: 3}
     - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76.99
@@ -1159,6 +1175,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400929974838019076, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: audWalk
+      value: 
+      objectReference: {fileID: 8300000, guid: d1a64a93ddb360f40ac44c951df4e90c, type: 3}
     - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 69.24

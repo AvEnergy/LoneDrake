@@ -38,11 +38,18 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] Transform headPos;
 
 
+    [Header("--------Audio-------")]
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip audWalk;
+    [SerializeField] float walkVol;
+
+
     Color myColor;
 
     bool isShooting;
     bool playerinRange;
     bool destinationChosen;
+    bool playingSteps;
     float angleToPlayer;
     float stoppingDistOrig;
     Vector3 startingPos;
@@ -74,7 +81,10 @@ public class enemyAI : MonoBehaviour, iDamage
         {
             StartCoroutine(roam());
         }
-
+        if(agent.velocity.magnitude > 0.01f && !playingSteps)
+        {
+            StartCoroutine(playfootSteps());
+        }
     }
     IEnumerator roam()
         {
@@ -91,6 +101,14 @@ public class enemyAI : MonoBehaviour, iDamage
                 destinationChosen = false;
             }
         }
+
+    IEnumerator playfootSteps()
+    {
+        playingSteps = true;
+        aud.PlayOneShot(audWalk, walkVol);
+        yield return new WaitForSeconds(0.5f);
+        playingSteps = false;
+    }
     bool canSeePlayer()
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
