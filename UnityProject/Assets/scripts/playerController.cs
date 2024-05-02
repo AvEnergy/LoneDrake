@@ -27,6 +27,14 @@ public class playerController : MonoBehaviour, iDamage
     [SerializeField] GameObject flamethrower;
     [SerializeField] GameObject FTBurn;
 
+
+    [Header("-------Audio-------")]
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] audJump;
+    [SerializeField] float jumpVol;
+
+
+    bool playingSteps;
     public bool hasKey;
     bool isShooting;
     bool isFlameThrower;
@@ -87,6 +95,7 @@ public class playerController : MonoBehaviour, iDamage
 
         if (Input.GetButtonDown("Jump") && jumpedTimes < maxJumps)
         {
+            aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], jumpVol);
             jumpedTimes++;
             playerVel.y = jumpSpeed;
         }
@@ -100,7 +109,6 @@ public class playerController : MonoBehaviour, iDamage
         playerVel.y -= gravity * Time.deltaTime;
         controller.Move(playerVel * Time.deltaTime);
     }
-
     //Creates and launches a fireball from shootPos. Not automatic, so player needs to click Lclick each time they want to shoot.
     IEnumerator shootFireball()
     {
