@@ -101,9 +101,13 @@ public class enemyAI : MonoBehaviour, iDamage
                 agent.stoppingDistance = stoppingDistOrig;
         agent.SetDestination(gameManager.instance.player.transform.position);
                 if (!isShooting)
-                    StartCoroutine(shootThem());             
+                    StartCoroutine(shootThem());
+                if (!meleeAttack && CanMeleeAttack)
+                {
+                    Attack();
+                }
 
-                    if (agent.remainingDistance <= agent.stoppingDistance)
+                if (agent.remainingDistance <= agent.stoppingDistance)
                     {
                         faceTarget();
                     }
@@ -209,7 +213,7 @@ public class enemyAI : MonoBehaviour, iDamage
     //Function to deal melee damage, still need to figure out a way to assign it to specific enemy
     public void Attack()
     {
-        anim.SetTrigger("Attack");
+        anim.SetTrigger("attack");
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, meleeDist))
         {

@@ -815,7 +815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   speed: 5
-  facetargetSpeed: 100
+  facetargetSpeed: 10
   iKnowWherePlayerIs: 0
   CanShootAttack: 0
   shootRate: 0
