@@ -16,13 +16,10 @@ public class EnemyWizard : MonoBehaviour, iDamage
 
     [Header("--------Shooting STATS--------")]
     [SerializeField] bool CanShootAttack;
-    [SerializeField] float shootRate;
 
     [Header("-------Melee Stats------")]
-    [SerializeField] bool CanMeleeAttack;
     [SerializeField] int meleeDmg;
     [SerializeField] float meleeDist;
-    [SerializeField] float cooldownTime;
     [SerializeField] int viewCone;
 
     [Header("-------Game Objects------")]
@@ -32,14 +29,21 @@ public class EnemyWizard : MonoBehaviour, iDamage
     [SerializeField] GameObject FireBall;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    [SerializeField] Transform crotchPos;
     [SerializeField] Animator anim;
+    [SerializeField] Animation RangeSpeed;
 
+    Color origColor;
+
+    bool damageAnimCD;
     bool aggro;
     bool isShooting;
-    bool meleeAttack;
     bool playerinRange;
+    bool doChargeAttack;
     float angleToPlayer;
     float stoppingDistOrig;
+    int phase;
+    int chargeCounter;
     Vector3 startingPos;
     Vector3 playerDir;
 
@@ -48,13 +52,24 @@ public class EnemyWizard : MonoBehaviour, iDamage
     {
         aggro = false;
         stoppingDistOrig = agent.stoppingDistance;
+        doChargeAttack = false;
+        phase = 2;
+        chargeCounter = 0;
+        origColor = model.material.color;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        Debug.DrawRay(crotchPos.position, playerDir * meleeDist, Color.red);
         if (hp > 0)
         {
+            if (doChargeAttack)
+            {
+                anim.SetBool("attack_long", false);
+                chargeAttack();
+            }
             if (playerinRange && canSeePlayer())
             {
                 aggro = true;
@@ -62,57 +77,36 @@ public class EnemyWizard : MonoBehaviour, iDamage
             if (aggro)
             {
                 anim.SetTrigger("idle_combat");
-                movement();
             }
+
         }
     }
     bool canSeePlayer()
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, headPos.position.y, playerDir.z), transform.forward);
-        Debug.Log(angleToPlayer);
         agent.SetDestination(gameManager.instance.player.transform.position);
         RaycastHit hit;
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
-            Debug.Log(hit.transform.name);
+            
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
                 agent.stoppingDistance = stoppingDistOrig;
                 if (!isShooting)
-                    StartCoroutine(shootThem());
+                {
+                    anim.SetBool("attack_long", true);
+                }
 
-                    if (agent.remainingDistance <= agent.stoppingDistance)
-                    {
-                        faceTarget();
-                    }
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
                 return true;
             }
         }
         agent.stoppingDistance = 0;
         return false;
-    }
-
-
-    public void movement()
-    {
-        if (playerinRange)
-        {
-            playerDir = gameManager.instance.player.transform.position - transform.position;
-            agent.SetDestination(gameManager.instance.player.transform.position);
-            if (!isShooting && CanShootAttack)
-            {
-                StartCoroutine(shootThem());
-            }
-            if (!meleeAttack && CanMeleeAttack)
-            {
-                Attack();
-            }
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                faceTarget();
-            }
-        }
     }
 
     //Checks if player is inside the collider 
@@ -124,7 +118,6 @@ public class EnemyWizard : MonoBehaviour, iDamage
         }
     }
 
-
     //checks if player is outside the collider
     public void OnTriggerExit(Collider other)
     {
@@ -133,7 +126,6 @@ public class EnemyWizard : MonoBehaviour, iDamage
             playerinRange = false;
         }
     }
-
 
     //Enemy faces the player
     void faceTarget()
@@ -144,10 +136,22 @@ public class EnemyWizard : MonoBehaviour, iDamage
     public void takeDamage(int amount)
     {
         hp -= amount;
-        anim.SetTrigger("damage_001");
+        StartCoroutine(changeColor());
+        if (!damageAnimCD)
+        {
+            StartCoroutine(damageAnim());
+        }
         if (hp > 0)
         {
             agent.SetDestination(gameManager.instance.player.transform.position);
+        }
+        if (hp <= 200 && chargeCounter == 0)
+        {
+            doChargeAttack = true;
+        }
+        if (hp <= 100 && chargeCounter == 1)
+        {
+            doChargeAttack = true;
         }
         if (hp <= 0)
         {
@@ -157,39 +161,76 @@ public class EnemyWizard : MonoBehaviour, iDamage
         }
     }
 
+    IEnumerator changeColor()
+    {
+        model.material.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = origColor;
+    }
+    IEnumerator damageAnim()
+    {
+        damageAnimCD = true;
+        anim.SetTrigger("damage");
+        yield return new WaitForSeconds(5);
+        damageAnimCD = false;
+    }
+
+    //attack_long animation calling this function.
     IEnumerator shootThem()
     {
         isShooting = true;
-
         Instantiate(FireBall, shootPos.position, transform.rotation);
-
-        yield return new WaitForSeconds(shootRate);
+        yield return new WaitForSeconds(0);
         isShooting = false;
-    }
-
-    //cooldown when enemy deals melee damage
-    IEnumerator cooldown()
-    {
-        meleeAttack = true;
-        yield return new WaitForSeconds(cooldownTime);
-        meleeAttack = false;
     }
 
     public void Attack()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, meleeDist))
+        if (Physics.Raycast(crotchPos.position, transform.forward, out hit, meleeDist))
         {
             if (hit.collider.CompareTag("Player"))
             {
                 iDamage dmg = hit.collider.GetComponent<iDamage>();
                 if (hit.transform != transform && dmg != null)
                 {
-
                     dmg.takeDamage(meleeDmg);
-                    StartCoroutine(cooldown());
                 }
             }
         }
+    }
+
+    public void chargeAttack()
+    {
+        isShooting = true;
+        anim.SetBool("attack_long", false);
+        anim.SetBool("move_forward_fast", true);
+        stoppingDistOrig = 3.5f;
+        agent.speed = 6;
+        RaycastHit hit;
+        if (Physics.Raycast(crotchPos.position, transform.forward, out hit, meleeDist))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                anim.SetTrigger("attack_short_001");
+                doChargeAttack = false;
+            }
+        }
+
+    }
+
+    public void cancelChargeAttack()
+    {
+        stoppingDistOrig = 10;
+        isShooting = false;
+        agent.speed = 3.5f;
+        anim.SetBool("move_forward_fast", false);
+        phaseChange();
+    }
+
+    public void phaseChange()
+    {
+        chargeCounter++;
+        anim.SetFloat("DoubleAttackSpeed", phase++);
     }
 }
