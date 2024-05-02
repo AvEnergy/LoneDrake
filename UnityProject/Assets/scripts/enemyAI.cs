@@ -101,7 +101,7 @@ public class enemyAI : MonoBehaviour, iDamage
                 agent.stoppingDistance = stoppingDistOrig;
         agent.SetDestination(gameManager.instance.player.transform.position);
                 if (!isShooting)
-                    //StartCoroutine(shoot());              "shoot does not exist in this context"
+                    StartCoroutine(shootThem());             
 
                     if (agent.remainingDistance <= agent.stoppingDistance)
                     {

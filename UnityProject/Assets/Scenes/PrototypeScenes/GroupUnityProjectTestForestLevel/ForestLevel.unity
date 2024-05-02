@@ -293,7 +293,7 @@ CapsuleCollider:
   m_Radius: 0.35
   m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.74, z: 0}
 --- !u!1001 &570686991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -654,6 +654,7 @@ GameObject:
   - component: {fileID: 1555987986}
   - component: {fileID: 1555987985}
   - component: {fileID: 1555987988}
+  - component: {fileID: 1555987989}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -766,6 +767,22 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: d0ae8bf81406305439a0bd34d94f85d9, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &1555987989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555987984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb71b334dbd586140866be6655fc3f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  speed: 0
+  damage: 0
+  destroyTime: 0
 --- !u!1 &1890362187
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,10 +960,10 @@ PrefabInstance:
     - target: {fileID: 3621275495995181393, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
       propertyPath: FireBall
       value: 
-      objectReference: {fileID: 100000, guid: 54b695eccb5c59849b82651e85e5b1b1, type: 3}
+      objectReference: {fileID: 883272526524176970, guid: 544e0258bba8e5f43a65d137e5a38f36, type: 3}
     - target: {fileID: 3621275495995181393, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
       propertyPath: roamDist
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3621275495995181393, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
       propertyPath: shootPos
@@ -975,10 +992,10 @@ PrefabInstance:
     - target: {fileID: 9051058637632056442, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 1bd48d36d3280cc4f966198224c78b9c, type: 2}
+      objectReference: {fileID: 9100000, guid: 96886cf178f6cf5469df1a422f2f1ae8, type: 2}
     - target: {fileID: 9051058637641572304, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
       propertyPath: m_Name
-      value: Goblin_Ranger_R1
+      value: RangedVariant
       objectReference: {fileID: 0}
     - target: {fileID: 9051058637641663408, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
       propertyPath: m_LocalPosition.x
