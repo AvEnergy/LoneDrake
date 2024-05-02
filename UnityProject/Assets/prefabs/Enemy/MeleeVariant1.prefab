@@ -824,7 +824,7 @@ MonoBehaviour:
   meleeDist: 2
   cooldownTime: 2
   roamDist: 5
-  pauseTimer: 5
+  pauseTimer: 7
   viewCone: 180
   animSpeedTrans: 5
   agent: {fileID: 6980408917806656022}
