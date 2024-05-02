@@ -37,7 +37,7 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] GameObject FireBall;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
-    [SerializeField] Color myColor;
+    Color myColor;
 
     bool isShooting;
     bool meleeAttack;
@@ -51,7 +51,9 @@ public class enemyAI : MonoBehaviour, iDamage
     // Start is called before the first frame update
     void Start()
     {
-       
+        stoppingDistOrig = agent.stoppingDistance;
+       startingPos = transform.position;
+        myColor = model.material.color;
     }
 
     // Update is called once per frame
@@ -69,7 +71,6 @@ public class enemyAI : MonoBehaviour, iDamage
             StartCoroutine(roam());
         }
 
-        movement();
     }
     IEnumerator roam()
         {
@@ -91,7 +92,6 @@ public class enemyAI : MonoBehaviour, iDamage
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, headPos.position.y, playerDir.z), transform.forward);
         Debug.Log(angleToPlayer);
-        agent.SetDestination(gameManager.instance.player.transform.position);
         RaycastHit hit;
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
@@ -99,6 +99,7 @@ public class enemyAI : MonoBehaviour, iDamage
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
                 agent.stoppingDistance = stoppingDistOrig;
+        agent.SetDestination(gameManager.instance.player.transform.position);
                 if (!isShooting)
                     //StartCoroutine(shoot());              "shoot does not exist in this context"
 
@@ -130,7 +131,6 @@ public class enemyAI : MonoBehaviour, iDamage
             }
             if(!meleeAttack && CanMeleeAttack)
             {
-                anim.SetTrigger("Attack");
                 Attack();
             }
             if (agent.remainingDistance <= agent.stoppingDistance)
@@ -209,7 +209,8 @@ public class enemyAI : MonoBehaviour, iDamage
     //Function to deal melee damage, still need to figure out a way to assign it to specific enemy
     public void Attack()
     {
-            RaycastHit hit;
+        anim.SetTrigger("Attack");
+        RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, meleeDist))
         {
             if (hit.collider.CompareTag("Player"))

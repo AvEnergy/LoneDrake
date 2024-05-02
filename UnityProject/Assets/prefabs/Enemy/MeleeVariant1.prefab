@@ -791,7 +791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934212114096619192}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9826142, z: -0, w: 0.18565926}
+  m_LocalRotation: {x: 0, y: -0.9826144, z: 0, w: 0.1856581}
   m_LocalPosition: {x: 70.02514, y: 0.00000023841858, z: 58.63368}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
@@ -813,28 +813,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8770922c8bf93104aa8ca043eafabeaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 40
+  hp: 10
   speed: 5
   facetargetSpeed: 100
   iKnowWherePlayerIs: 0
   CanShootAttack: 0
   shootRate: 0
   CanMeleeAttack: 1
-  meleeDmg: 10
-  meleeDist: 15
-  cooldownTime: 5
-  roamDist: 0
-  pauseTimer: 0
-  viewCone: 5
+  meleeDmg: 5
+  meleeDist: 2
+  cooldownTime: 2
+  roamDist: 5
+  pauseTimer: 5
+  viewCone: 180
   animSpeedTrans: 5
   agent: {fileID: 6980408917806656022}
   playertemp: {fileID: 0}
-  model: {fileID: 13700002, guid: 06033faff6ed98c4292f7a342b048834, type: 3}
+  model: {fileID: 8330736844002669888}
   anim: {fileID: 3085077548759254644}
   FireBall: {fileID: 0}
   shootPos: {fileID: 0}
-  headPos: {fileID: 0}
-  myColor: {r: 0, g: 0, b: 0, a: 0}
+  headPos: {fileID: 5578313808403267704}
 --- !u!95 &3085077548759254644
 Animator:
   serializedVersion: 5
@@ -870,7 +869,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -920,8 +919,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 10
+  m_Center: {x: 0, y: 0.76, z: 0}
 --- !u!1 &1984898550153006730
 GameObject:
   m_ObjectHideFlags: 0
