@@ -3933,10 +3933,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7282396975303278723, guid: 57ece84e87c84c64d9f86eeda97f81b8, type: 3}
-      propertyPath: hasKey
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8626084559451263684, guid: 57ece84e87c84c64d9f86eeda97f81b8, type: 3}
       propertyPath: m_Name
       value: Player Variant
@@ -4517,9 +4513,9 @@ SceneRoots:
   - {fileID: 1636872139}
   - {fileID: 90432728}
   - {fileID: 300821773}
+  - {fileID: 1888256698}
   - {fileID: 580249518}
   - {fileID: 331589844}
-  - {fileID: 1888256698}
   - {fileID: 1254043367}
   - {fileID: 112654904}
   - {fileID: 975909111}

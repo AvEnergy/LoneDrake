@@ -31,7 +31,12 @@ public class playerController : MonoBehaviour, iDamage
     [Header("-------Audio-------")]
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] audJump;
+    [SerializeField] AudioClip[] audFlame;
+    [SerializeField] AudioClip audFireball;
     [SerializeField] float jumpVol;
+    [SerializeField] float flameVol;
+    [SerializeField] float fireballVol;
+
 
 
     bool playingSteps;
@@ -63,6 +68,7 @@ public class playerController : MonoBehaviour, iDamage
         //Lets the player shoot the fireball when Lclick. If using the flamethrower, player will not be able to shoot.
         if (Input.GetButtonDown("Shoot") && !isFlameThrower && !gameManager.instance.isPaused)
         {
+            aud.PlayOneShot(audFireball);
             StartCoroutine(shootFireball());
         }
         //Turns the flamethrower animation on when player clicks Rclick.
@@ -74,6 +80,7 @@ public class playerController : MonoBehaviour, iDamage
         //Raycasting for the flamethrower.
         if (Input.GetButton("Fire2") && !isShooting)
         {
+            aud.PlayOneShot(audFlame[Random.Range(0, audFlame.Length)], flameVol);
             StartCoroutine(shootFlameThrower());
             if (HeatPlayer <= 0)
             {
@@ -83,6 +90,7 @@ public class playerController : MonoBehaviour, iDamage
         //Turns the flamethrower animation off when player released Rclick.
         if (Input.GetButtonUp("Fire2"))
         {
+            aud.Stop();
             isFlameThrower = false;
             flamethrower.SetActive(false);
         }
