@@ -99,7 +99,7 @@ public class enemyAI : MonoBehaviour, iDamage
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
                 agent.stoppingDistance = stoppingDistOrig;
-        agent.SetDestination(gameManager.instance.player.transform.position);
+                agent.SetDestination(gameManager.instance.player.transform.position);
                 if (!isShooting)
                     StartCoroutine(shootThem());
                 if (!meleeAttack && CanMeleeAttack)
@@ -177,7 +177,6 @@ public class enemyAI : MonoBehaviour, iDamage
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
             anim.SetTrigger("Death");
             Destroy(gameObject);
         }

@@ -27,6 +27,7 @@ public class playerController : MonoBehaviour, iDamage
     [SerializeField] GameObject flamethrower;
     [SerializeField] GameObject FTBurn;
 
+    public bool hasKey;
     bool isShooting;
     bool isFlameThrower;
     int jumpedTimes;
@@ -38,6 +39,7 @@ public class playerController : MonoBehaviour, iDamage
     // Start is called before the first frame update
     void Start()
     {
+        hasKey = false;
         flamethrower.SetActive(false);
         HPOrig = playerHP;
         HeatPlayer = playerHeat;

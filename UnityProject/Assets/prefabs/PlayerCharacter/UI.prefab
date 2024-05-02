@@ -2125,7 +2125,7 @@ GameObject:
   - component: {fileID: 603608517194494620}
   - component: {fileID: 8307598436527052192}
   m_Layer: 5
-  m_Name: EnemyCount
+  m_Name: SetObjective
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2147,7 +2147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 220.00006, y: -0.000030517578}
+  m_AnchoredPosition: {x: 243.2, y: -0.000030517578}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &603608517194494620
@@ -2178,7 +2178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00
+  m_text: Set objective
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2435,7 +2435,7 @@ MonoBehaviour:
   menuWinner: {fileID: 2326233586614870263}
   menuLoser: {fileID: 6836901422436399271}
   menuCheckPoint: {fileID: 2154093017099883105}
-  enemycountHUD: {fileID: 8307598436527052192}
+  objText: {fileID: 8307598436527052192}
   playerIsHit: {fileID: 3878538911222674289}
   playerHPBar: {fileID: 4340480766962259453}
   fireBar: {fileID: 2781718333818486031}
@@ -2444,6 +2444,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   isPaused: 0
   enemyCount: 0
+  bossNotKilled: 0
 --- !u!114 &2045006248313509319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2547,7 +2548,7 @@ GameObject:
   - component: {fileID: 4272297409502796432}
   - component: {fileID: 5415513009939781742}
   m_Layer: 5
-  m_Name: EnemyCountLabel
+  m_Name: CurrentObjective
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2570,8 +2571,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -838, y: 456.6}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -799, y: 456.6}
+  m_SizeDelta: {x: 241.08, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4272297409502796432
 CanvasRenderer:
@@ -2601,7 +2602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Enemy Count:'
+  m_text: 'Current Objective:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

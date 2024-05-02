@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class gameManager : MonoBehaviour
@@ -14,7 +15,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWinner;
     [SerializeField] GameObject menuLoser;
     public GameObject menuCheckPoint;
-    public TMP_Text enemycountHUD;
+    public TMP_Text objText;
     public GameObject playerIsHit;
     public Image playerHPBar;
     public Image fireBar;
@@ -25,6 +26,7 @@ public class gameManager : MonoBehaviour
 
     public bool isPaused;
     public int enemyCount;
+    public bool bossNotKilled;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,6 +35,7 @@ public class gameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerSpawnPos = GameObject.FindWithTag("Player Spawn POS");
         playerScript = player.GetComponent<playerController>();
+        bossNotKilled = true;
     }
 
     // Update is called once per frame
@@ -44,7 +47,7 @@ public class gameManager : MonoBehaviour
             menuActive = menuPaused;
             menuActive.SetActive(isPaused);
         }
-        enemycountHUD.text = enemyCount.ToString();
+        levelObjective();
     }
     //Stops the game, gives player back mouse. Called when 
     public void statePaused()
@@ -65,11 +68,9 @@ public class gameManager : MonoBehaviour
         menuActive = null;
     }
     //Checks to see if all enemys are dead, if yes, you win.
-    public void updateGameGoal(int amount)
+    public void updateGameGoal()
     {
-        enemyCount += amount;
-
-        if (enemyCount <= 0)
+        if (bossNotKilled == false)
         {
             statePaused();
             menuActive = menuWinner;
@@ -82,5 +83,29 @@ public class gameManager : MonoBehaviour
         statePaused();
         menuActive = menuLoser;
         menuActive.SetActive(menuLoser);
+    }
+    
+    public void levelObjective()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            objText.text = "Head to the Dwarf Fortress.";
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if(!gameManager.instance.playerScript.hasKey)
+            {
+                objText.text = "Find the key.";
+            }
+            else
+            {
+                objText.text = "Enter the fortess.";
+            }
+
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            objText.text = "Kill the wizard and save mom.";
+        }
     }
 }

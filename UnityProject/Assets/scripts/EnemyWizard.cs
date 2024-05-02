@@ -133,6 +133,7 @@ public class EnemyWizard : MonoBehaviour, iDamage
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * facetargetSpeed);
     }
+
     public void takeDamage(int amount)
     {
         hp -= amount;
@@ -158,6 +159,7 @@ public class EnemyWizard : MonoBehaviour, iDamage
             aggro = false;
             stoppingDistOrig = 100;
             anim.SetTrigger("dead");
+            StartCoroutine(winTheGame());
         }
     }
 
@@ -167,6 +169,7 @@ public class EnemyWizard : MonoBehaviour, iDamage
         yield return new WaitForSeconds(0.1f);
         model.material.color = origColor;
     }
+
     IEnumerator damageAnim()
     {
         damageAnimCD = true;
@@ -232,5 +235,12 @@ public class EnemyWizard : MonoBehaviour, iDamage
     {
         chargeCounter++;
         anim.SetFloat("DoubleAttackSpeed", phase++);
+    }
+
+    IEnumerator winTheGame()
+    {
+        yield return new WaitForSeconds(6);
+        gameManager.instance.bossNotKilled = false;
+        gameManager.instance.updateGameGoal();
     }
 }
