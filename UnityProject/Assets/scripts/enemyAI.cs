@@ -33,9 +33,11 @@ public class enemyAI : MonoBehaviour, iDamage
     public GameObject playertemp;
     [SerializeField] Renderer model;
     [SerializeField] Animator anim;
-    [SerializeField] GameObject FireBall;
+    [SerializeField] GameObject arrow;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+
+
     Color myColor;
 
     bool isShooting;
@@ -103,7 +105,7 @@ public class enemyAI : MonoBehaviour, iDamage
 
                 if (!isShooting && CanShootAttack)
                 {
-                    StartCoroutine(shootThem());
+                    anim.SetTrigger("shoot");
                 }
                 if (CanMeleeAttack)
                 {
@@ -168,14 +170,9 @@ public class enemyAI : MonoBehaviour, iDamage
         model.material.color = myColor;
     }
 
-    IEnumerator shootThem()
+    public void shootThem()
     {
-        isShooting = true;
-
-        Instantiate(FireBall, shootPos.position, transform.rotation);
-
-        yield return new WaitForSeconds(shootRate);
-        isShooting = false;
+        Instantiate(arrow, shootPos.position, transform.rotation);
     }
 
     //Function being called by animation.
