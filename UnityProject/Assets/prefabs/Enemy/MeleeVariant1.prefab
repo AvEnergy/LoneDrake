@@ -821,19 +821,18 @@ MonoBehaviour:
   shootRate: 0
   CanMeleeAttack: 1
   meleeDmg: 5
-  meleeDist: 2
-  cooldownTime: 2
+  meleeDist: 3
   roamDist: 5
   pauseTimer: 7
-  viewCone: 180
+  viewCone: 90
   animSpeedTrans: 5
   agent: {fileID: 6980408917806656022}
   playertemp: {fileID: 0}
   model: {fileID: 8330736844002669888}
   anim: {fileID: 3085077548759254644}
   FireBall: {fileID: 0}
-  shootPos: {fileID: 0}
-  headPos: {fileID: 5578313808403267704}
+  shootPos: {fileID: 3085218975670092161}
+  headPos: {fileID: 1984780105296993405}
 --- !u!95 &3085077548759254644
 Animator:
   serializedVersion: 5

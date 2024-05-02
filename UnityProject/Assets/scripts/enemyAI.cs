@@ -23,7 +23,6 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] bool CanMeleeAttack;
     [SerializeField] int meleeDmg;
     [SerializeField] float meleeDist;
-    [SerializeField] float cooldownTime;
     [SerializeField] int roamDist;
     [SerializeField] int pauseTimer;
     [SerializeField] int viewCone;
@@ -51,9 +50,9 @@ public class enemyAI : MonoBehaviour, iDamage
     // Start is called before the first frame update
     void Start()
     {
-        stoppingDistOrig = agent.stoppingDistance;
+       stoppingDistOrig = agent.stoppingDistance;
        startingPos = transform.position;
-        myColor = model.material.color;
+       myColor = model.material.color;
     }
 
     // Update is called once per frame
@@ -90,9 +89,10 @@ public class enemyAI : MonoBehaviour, iDamage
     bool canSeePlayer()
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
-        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, headPos.position.y, playerDir.z), transform.forward);
+        angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y, playerDir.z), transform.forward);
         Debug.Log(angleToPlayer);
         RaycastHit hit;
+
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
             Debug.Log(hit.transform.name);
@@ -100,48 +100,27 @@ public class enemyAI : MonoBehaviour, iDamage
             {
                 agent.stoppingDistance = stoppingDistOrig;
                 agent.SetDestination(gameManager.instance.player.transform.position);
-                if (!isShooting)
-                    StartCoroutine(shootThem());
-                if (!meleeAttack && CanMeleeAttack)
-                {
-                    Attack();
-                }
 
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (!isShooting && CanShootAttack)
+                {
+                    StartCoroutine(shootThem());
+                }
+                if (CanMeleeAttack)
+                {
+                    if (Physics.Raycast(shootPos.position, transform.forward, out hit, meleeDist))
                     {
-                        faceTarget();
+                        anim.SetTrigger("attack");
                     }
+                }
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
                 return true;
             }
         }
         agent.stoppingDistance = 0;
         return false;
-    }
-
-
-    public void movement()
-    {
-        if (iKnowWherePlayerIs)
-        {
-            agent.SetDestination(gameManager.instance.player.transform.position);
-        }
-        if (playerinRange)
-        {
-            playerDir = gameManager.instance.player.transform.position - transform.position;
-            agent.SetDestination(gameManager.instance.player.transform.position);
-            if (!isShooting && CanShootAttack)
-            {
-                StartCoroutine(shootThem());
-            }
-            if(!meleeAttack && CanMeleeAttack)
-            {
-                Attack();
-            }
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                faceTarget();
-            }
-        }
     }
 
     //Checks if player is inside the collider 
@@ -163,13 +142,13 @@ public class enemyAI : MonoBehaviour, iDamage
         }
     }
 
-
     //Enemy faces the player
     void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(playerDir);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * facetargetSpeed);
     }
+
     public void takeDamage(int amount)
     {
         hp -= amount;
@@ -199,22 +178,12 @@ public class enemyAI : MonoBehaviour, iDamage
         isShooting = false;
     }
 
-    //cooldown when enemy deals melee damage
-    IEnumerator cooldown()
-    {
-        meleeAttack = true;
-        yield return new WaitForSeconds(cooldownTime);
-        meleeAttack = false;
-    }
-
-
-
-    //Function to deal melee damage, still need to figure out a way to assign it to specific enemy
+    //Function being called by animation.
     public void Attack()
     {
-        anim.SetTrigger("attack");
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, meleeDist))
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
+        if (Physics.Raycast(shootPos.position, transform.forward, out hit, meleeDist))
         {
             if (hit.collider.CompareTag("Player"))
             {
@@ -222,7 +191,6 @@ public class enemyAI : MonoBehaviour, iDamage
                 if (hit.transform != transform && dmg != null)
                 {
                     dmg.takeDamage(meleeDmg);
-                    StartCoroutine(cooldown());
                 }
             }
         }
