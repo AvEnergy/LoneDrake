@@ -41,7 +41,6 @@ public class enemyAI : MonoBehaviour, iDamage
     Color myColor;
 
     bool isShooting;
-    bool meleeAttack;
     bool playerinRange;
     bool destinationChosen;
     float angleToPlayer;
@@ -62,7 +61,11 @@ public class enemyAI : MonoBehaviour, iDamage
     {
         float animSpeed = agent.velocity.normalized.magnitude;
         anim.SetFloat("Blend", Mathf.Lerp(anim.GetFloat("Blend"), animSpeed, Time.deltaTime * animSpeedTrans));
-
+        if (iKnowWherePlayerIs)
+        {
+            agent.stoppingDistance = stoppingDistOrig;
+            agent.SetDestination(gameManager.instance.player.transform.position);
+        }
         if (playerinRange && !canSeePlayer())
         {
             StartCoroutine(roam());
@@ -158,7 +161,6 @@ public class enemyAI : MonoBehaviour, iDamage
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
-            anim.SetTrigger("Death");
             Destroy(gameObject);
         }
     }

@@ -10,13 +10,14 @@ public class Spawner : MonoBehaviour
     [SerializeField] float spawnTimer;
     [SerializeField] Transform[] spawnPos;
 
+    int location;
     int spawnCount;
     bool isSpawning;
     bool startSpawning;
     // Start is called before the first frame update
     void Start()
     {
-        
+        location = 0;
     }
 
     // Update is called once per frame
@@ -39,11 +40,12 @@ public class Spawner : MonoBehaviour
     IEnumerator spawn()
     {
         isSpawning = true;
-        int arrayPos = Random.Range(0, spawnPos.Length);
-        Instantiate(objectToSpawn, spawnPos[arrayPos].position, spawnPos[arrayPos].rotation);
-
+        location++;
+        Instantiate(objectToSpawn, spawnPos[location].position, spawnPos[location].rotation);
+        
         spawnCount++;
         yield return new WaitForSeconds(spawnTimer);
         isSpawning = false;
+        location = 0;
     }
 }
