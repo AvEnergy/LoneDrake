@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.02
+      value: 62.144047
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.599609
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 44.56
+      value: 39.715748
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -69,6 +69,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3751271556547115874}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: FTBurn
       value: 
       objectReference: {fileID: 6422563505323142345, guid: 326074a8156d5464088a188c63c79fea, type: 3}
@@ -82,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: playerHP
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: shootRate

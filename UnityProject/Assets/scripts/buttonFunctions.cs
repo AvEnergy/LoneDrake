@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class buttonFunctions : MonoBehaviour
 {
+    public void startGame()
+    {
+        gameManager.instance.stateUnPaused();
+    }
     public void resume()
     {
         gameManager.instance.stateUnPaused();

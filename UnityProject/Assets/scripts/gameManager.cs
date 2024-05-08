@@ -11,6 +11,7 @@ public class gameManager : MonoBehaviour
     public static gameManager instance;
 
     [SerializeField] GameObject menuActive;
+    [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject menuPaused;
     [SerializeField] GameObject menuWinner;
     [SerializeField] GameObject menuLoser;
@@ -19,6 +20,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerIsHit;
     public Image playerHPBar;
     public Image fireBar;
+    public Image bossHp;
 
     public GameObject player;
     public GameObject playerSpawnPos;

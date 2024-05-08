@@ -35,6 +35,7 @@ public class EnemyWizard : MonoBehaviour, iDamage
 
     Color origColor;
 
+    int hpOrig;
     bool damageAnimCD;
     bool aggro;
     bool isShooting;
@@ -50,6 +51,7 @@ public class EnemyWizard : MonoBehaviour, iDamage
     // Start is called before the first frame update
     void Start()
     {
+        hpOrig = hp;
         aggro = false;
         stoppingDistOrig = agent.stoppingDistance;
         doChargeAttack = false;
@@ -136,8 +138,10 @@ public class EnemyWizard : MonoBehaviour, iDamage
 
     public void takeDamage(int amount)
     {
+        gameManager.instance.bossHp.enabled = true;
         hp -= amount;
         StartCoroutine(changeColor());
+
         if (!damageAnimCD)
         {
             StartCoroutine(damageAnim());
@@ -161,6 +165,7 @@ public class EnemyWizard : MonoBehaviour, iDamage
             anim.SetTrigger("dead");
             StartCoroutine(winTheGame());
         }
+        gameManager.instance.bossHp.fillAmount = (float)hp / hpOrig;
     }
 
     IEnumerator changeColor()
