@@ -11,6 +11,13 @@ public class gameManager : MonoBehaviour
 
     public static gameManager instance;
 
+    [Header("-------XPtracking------")]
+    [SerializeField] AudioSource levelUpSound;
+    public Image XPBar;
+    public TMP_Text levelText;
+    public int currLvl;
+    public int XP;
+
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject menuPaused;
@@ -23,6 +30,7 @@ public class gameManager : MonoBehaviour
     public Image fireBar;
     public Image bossHp;
 
+
     public GameObject player;
     public GameObject playerSpawnPos;
     public playerController playerScript;
@@ -30,6 +38,8 @@ public class gameManager : MonoBehaviour
     public bool isPaused;
     public int enemyCount;
     public bool bossNotKilled;
+
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -87,7 +97,7 @@ public class gameManager : MonoBehaviour
         menuActive = menuLoser;
         menuActive.SetActive(menuLoser);
     }
-    
+  
     public void levelObjective()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -110,5 +120,18 @@ public class gameManager : MonoBehaviour
         {
             objText.text = "Kill the wizard and save mom.";
         }
+    }
+
+    public void givePlayerXP(int XPamount)
+    {
+        XP += XPamount;
+        if(XP >= 100)
+        {
+            XP -= 100;
+            currLvl++;
+            levelText.text = currLvl.ToString();
+            levelUpSound.Play();
+        }
+        playerScript.updatePlayerUI();
     }
 }

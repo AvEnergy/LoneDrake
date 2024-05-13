@@ -180,6 +180,7 @@ public class enemyAI : MonoBehaviour, iDamage
         if (hp <= 0)
         {
             Destroy(gameObject);
+            gameManager.instance.givePlayerXP(30);
         }
     }
 

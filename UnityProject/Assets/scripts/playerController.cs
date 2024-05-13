@@ -26,7 +26,7 @@ public class playerController : MonoBehaviour, iDamage
     [SerializeField] GameObject fireball;
     [SerializeField] GameObject flamethrower;
     [SerializeField] GameObject FTBurn;
-
+    [SerializeField] Transform preMovement;
 
     [Header("-------Audio-------")]
     [SerializeField] AudioSource aud;
@@ -37,8 +37,6 @@ public class playerController : MonoBehaviour, iDamage
     [SerializeField] float flameVol;
     [SerializeField] float fireballVol;
 
-
-
     bool playingSteps;
     public bool hasKey;
     bool isShooting;
@@ -48,6 +46,7 @@ public class playerController : MonoBehaviour, iDamage
 
     Vector3 playerVel;
     Vector3 moveDir;
+
     float HeatPlayer;
     // Start is called before the first frame update
     void Start()
@@ -63,6 +62,11 @@ public class playerController : MonoBehaviour, iDamage
     // Update is called once per frame
     void Update()
     {
+        if (controller.isGrounded)
+        {
+            jumpedTimes = 0;
+            playerVel = Vector3.zero;
+        }
         Movement();
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         //Lets the player shoot the fireball when Lclick. If using the flamethrower, player will not be able to shoot.
@@ -106,12 +110,6 @@ public class playerController : MonoBehaviour, iDamage
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], jumpVol);
             jumpedTimes++;
             playerVel.y = jumpSpeed;
-        }
-
-        if (controller.isGrounded)
-        {
-            jumpedTimes = 0;
-            playerVel = Vector3.zero;
         }
 
         playerVel.y -= gravity * Time.deltaTime;
@@ -160,10 +158,11 @@ public class playerController : MonoBehaviour, iDamage
         }
     }
 
-    void updatePlayerUI()
+    public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)playerHP / HPOrig;
         gameManager.instance.fireBar.fillAmount = HeatPlayer / 100;
+        gameManager.instance.XPBar.fillAmount = (float)gameManager.instance.XP / 100;
     }
 
     IEnumerator playerWasHit()
@@ -187,4 +186,13 @@ public class playerController : MonoBehaviour, iDamage
         HeatPlayer += heat;
         updatePlayerUI();
     }
+
+    //Trying to figure out how get the enemy to prefire at the location that player is moving towards.
+
+    //private void preAimTrans()
+    //{
+    //    playerVel = moveDir / Time.deltaTime;
+    //    playerAccel = playerVel / Time.deltaTime;
+    //    preMovement.position += playerAccel;
+    //}
 }
