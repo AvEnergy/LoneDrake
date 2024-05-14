@@ -68,6 +68,14 @@ public class playerController : MonoBehaviour, iDamage
             playerVel = Vector3.zero;
         }
         Movement();
+        if (Input.GetButton("Sprint"))
+        {
+            speed = 12;
+        }
+        else
+        {
+            speed = 6;
+        }
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         //Lets the player shoot the fireball when Lclick. If using the flamethrower, player will not be able to shoot.
         if (Input.GetButtonDown("Shoot") && !isFlameThrower && !gameManager.instance.isPaused)
@@ -115,6 +123,7 @@ public class playerController : MonoBehaviour, iDamage
         playerVel.y -= gravity * Time.deltaTime;
         controller.Move(playerVel * Time.deltaTime);
     }
+
     //Creates and launches a fireball from shootPos. Not automatic, so player needs to click Lclick each time they want to shoot.
     IEnumerator shootFireball()
     {

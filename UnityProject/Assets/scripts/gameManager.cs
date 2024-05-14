@@ -30,6 +30,8 @@ public class gameManager : MonoBehaviour
     public Image fireBar;
     public Image bossHp;
 
+    public List<string> questItems;
+
 
     public GameObject player;
     public GameObject playerSpawnPos;
