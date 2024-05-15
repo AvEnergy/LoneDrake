@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
     
     public int currLvl;
     public int XP;
+    public int skillPoint;
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject mainMenu;
@@ -153,6 +154,7 @@ public class gameManager : MonoBehaviour
         {
             XP -= 100;
             currLvl++;
+            skillPoint++;
             levelText.text = currLvl.ToString();
             levelUpSound.Play();
         }

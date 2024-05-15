@@ -1116,18 +1116,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 2350344767858650852, guid: fef5421e3e81c954aa92ce17b770e391, type: 3}
-      propertyPath: m_text
-      value: 'Sec. Objective : '
-      objectReference: {fileID: 0}
-    - target: {fileID: 5883966158723898502, guid: fef5421e3e81c954aa92ce17b770e391, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -803
-      objectReference: {fileID: 0}
-    - target: {fileID: 5883966158723898502, guid: fef5421e3e81c954aa92ce17b770e391, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 417
-      objectReference: {fileID: 0}
     - target: {fileID: 8346081719245833194, guid: fef5421e3e81c954aa92ce17b770e391, type: 3}
       propertyPath: m_Pivot.x
       value: 0
