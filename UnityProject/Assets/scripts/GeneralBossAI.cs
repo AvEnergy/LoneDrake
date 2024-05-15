@@ -211,11 +211,14 @@ public class GeneralBossAI : MonoBehaviour, iDamage
             if (!stage1Complete && hp <= maxHealth * .5f)
             {
                 Debug.Log("Boss health below 50%!");
+                anim.SetTrigger("run");
                 speed += 4;
                 attackCooldown /= 2;
                 meleeDmg += 5;
                 stage1Complete = true;
                 currentHealth = hp;
+                animSpeedTrans += 4;
+                amount /= 2;
             }
         }
         if (Stage3 == true)
