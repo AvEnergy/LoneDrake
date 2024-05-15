@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GiantBossAI : MonoBehaviour, iDamage
+public class GeneralBossAI : MonoBehaviour, iDamage
 {
 
 
@@ -79,7 +79,7 @@ public class GiantBossAI : MonoBehaviour, iDamage
     void Update()
     {
         float animSpeed = agent.velocity.normalized.magnitude;
-        float moveSpeed = stage1Complete ? boostedMoveSpeed : speed;
+        float moveSpeedValue = stage1Complete ? boostedMoveSpeed : speed;
         anim.SetFloat("Blend", Mathf.Lerp(anim.GetFloat("Blend"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (iKnowWherePlayerIs)
         {
@@ -98,7 +98,7 @@ public class GiantBossAI : MonoBehaviour, iDamage
         {
             StartCoroutine(playfootSteps());
         }
-        if (!stage1Complete && currentHealth <= hp * 0.75f)
+        if (!stage1Complete && currentHealth <= hp * 0.5f)
         {
             stageTransition();
         }
