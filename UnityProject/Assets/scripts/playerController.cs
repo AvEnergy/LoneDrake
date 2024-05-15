@@ -196,6 +196,20 @@ public class playerController : MonoBehaviour, iDamage
         updatePlayerUI();
     }
 
+    public void GetHP(int amount)
+    {
+        int total = (playerHP + amount) - HPOrig;
+
+        if(total > HPOrig)
+        {
+            playerHP = HPOrig;
+        }
+        else
+        {
+            playerHP += amount;
+        }
+        updatePlayerUI();
+    }
     //Trying to figure out how get the enemy to prefire at the location that player is moving towards.
 
     //private void preAimTrans()
