@@ -17,6 +17,8 @@ public class GiantBossAI : MonoBehaviour, iDamage
     [SerializeField] float boostedMoveSpeed;
     [SerializeField] float attackCooldown;
     [SerializeField] float boostedAttackCooldown;
+    [SerializeField] private float minDistanceBetweenDestinations = 1.0f;
+
 
     [Header("--------Shooting STATS--------")]
     [SerializeField] bool CanShootAttack;
@@ -108,11 +110,15 @@ public class GiantBossAI : MonoBehaviour, iDamage
             destinationChosen = true;
             agent.stoppingDistance = 0;
             yield return new WaitForSeconds(pauseTimer);
-            Vector3 randomPos = Random.insideUnitSphere * roamDist;
-            randomPos += startingPos;
+
+            Vector3 randomPos = startingPos + Random.insideUnitSphere * roamDist;
             NavMeshHit hit;
-            NavMesh.SamplePosition(randomPos, out hit, roamDist, 1);
-            agent.SetDestination(hit.position);
+
+            if (NavMesh.SamplePosition(randomPos, out hit, roamDist, NavMesh.AllAreas))
+            {
+                agent.SetDestination(hit.position);
+            }
+
             destinationChosen = false;
         }
     }
