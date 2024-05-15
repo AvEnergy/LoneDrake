@@ -40,9 +40,11 @@ public class playerController : MonoBehaviour, iDamage
     bool playingSteps;
     public bool hasKey;
     bool isShooting;
-    bool isFlameThrower;
+    public bool isFlameThrower;
     int jumpedTimes;
     int HPOrig;
+
+    public GameObject whatHit;
 
     Vector3 playerVel;
     Vector3 moveDir;
@@ -67,7 +69,11 @@ public class playerController : MonoBehaviour, iDamage
             jumpedTimes = 0;
             playerVel = Vector3.zero;
         }
-        Movement();
+
+        if (SkillManager.instance.skillMenuActive == null)
+        {
+            Movement();
+        }
         if (Input.GetButton("Sprint"))
         {
             speed = 12;
@@ -209,6 +215,23 @@ public class playerController : MonoBehaviour, iDamage
             playerHP += amount;
         }
         updatePlayerUI();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Arrow arrow = other.GetComponent<Arrow>();
+        FireBall fireball = other.GetComponent<FireBall>();
+        whatHit = other.gameObject;
+        if(arrow != null)
+        {
+            if (playerHP <=0) 
+            gameManager.instance.killedby.text = "Golbin's Arrow";
+        }
+        if(fireball != null)
+        {
+            if (playerHP <= 0)
+                gameManager.instance.killedby.text = "Wizard FireBall";
+        }
     }
     //Trying to figure out how get the enemy to prefire at the location that player is moving towards.
 

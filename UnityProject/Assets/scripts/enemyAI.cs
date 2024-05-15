@@ -209,7 +209,12 @@ public class enemyAI : MonoBehaviour, iDamage
                 iDamage dmg = hit.collider.GetComponent<iDamage>();
                 if (hit.transform != transform && dmg != null)
                 {
+                    
                     dmg.takeDamage(meleeDmg);
+                    if (gameManager.instance.playerScript.playerHP <= 0)
+                    {
+                        gameManager.instance.killedby.text = "Enemy Melee";
+                    }
                 }
             }
         }

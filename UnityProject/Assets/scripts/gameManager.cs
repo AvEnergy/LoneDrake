@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class gameManager : MonoBehaviour
 {
@@ -14,15 +15,25 @@ public class gameManager : MonoBehaviour
     [Header("-------XPtracking------")]
     [SerializeField] AudioSource levelUpSound;
     public Image XPBar;
-    public TMP_Text levelText;
+    
     public int currLvl;
     public int XP;
+    public int skillPoint;
 
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject menuPaused;
     [SerializeField] GameObject menuWinner;
     [SerializeField] GameObject menuLoser;
+
+
+
+    [Header("-------XPtracking------")]
+    public GameObject PauseButtonSelected;
+    public GameObject SkillTreeButtonSelected;
+    public GameObject LoseButtonSelected;
+    public GameObject WinButtonSelected;
+
     public GameObject menuCheckPoint;
     public TMP_Text objText;
     public TMP_Text secObjText;
@@ -42,7 +53,12 @@ public class gameManager : MonoBehaviour
     public int enemyCount;
     public bool bossNotKilled;
 
-    
+    public TMP_Text levelText;
+
+    public TMP_Text killedby;
+
+
+
 
     // Start is called before the first frame update
     void Awake()
@@ -66,9 +82,7 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && menuActive == null)
         {
-            statePaused();
-            menuActive = menuPaused;
-            menuActive.SetActive(isPaused);
+            MenuPaused();
         }
         levelObjective();
     }
@@ -95,17 +109,38 @@ public class gameManager : MonoBehaviour
     {
         if (bossNotKilled == false)
         {
-            statePaused();
-            menuActive = menuWinner;
-            menuActive.SetActive(isPaused);
+            winner();
         }
+    }
+
+    public void MenuPaused()
+    {
+        statePaused();
+        menuActive = menuPaused; 
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(PauseButtonSelected);
+        menuActive.SetActive(isPaused);
+
+    }
+    public void winner()
+    {
+        statePaused();
+        menuActive = menuWinner;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(WinButtonSelected);
+        menuActive.SetActive(isPaused);
+
     }
     //Called if player loses all their HP.
     public void youLoser()
     {
         statePaused();
         menuActive = menuLoser;
+        //SkillManager.instance.skillMenuActive.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(LoseButtonSelected);
         menuActive.SetActive(menuLoser);
+      
     }
   
     public void levelObjective()
@@ -139,6 +174,7 @@ public class gameManager : MonoBehaviour
         {
             XP -= 100;
             currLvl++;
+            skillPoint++;
             levelText.text = currLvl.ToString();
             levelUpSound.Play();
         }

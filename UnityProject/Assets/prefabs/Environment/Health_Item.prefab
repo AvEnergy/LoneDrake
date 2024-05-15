@@ -205,8 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotSpeed: 90
   aud: {fileID: 8473644962084556866}
-  audItem: {fileID: 8300000, guid: d447bf6e0a4f22c49846bfb5c0d44e2d, type: 3}
-  ItemVol: 4.5
+  healSound: {fileID: 8300000, guid: d447bf6e0a4f22c49846bfb5c0d44e2d, type: 3}
 --- !u!82 &8473644962084556866
 AudioSource:
   m_ObjectHideFlags: 0
@@ -218,14 +217,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.924
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 198
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -263,7 +262,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.223
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -293,7 +292,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.072
       inSlope: 0
       outSlope: 0
       tangentMode: 0
