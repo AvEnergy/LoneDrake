@@ -2,7 +2,9 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class playerController : MonoBehaviour, iDamage
 {
@@ -15,6 +17,10 @@ public class playerController : MonoBehaviour, iDamage
     [SerializeField] int jumpSpeed;
     [SerializeField] int maxJumps;
     [SerializeField] int gravity;
+
+
+
+
 
     [Header("-------Flamethrower Settings------")]
     [SerializeField] int shootDistance;
@@ -41,6 +47,8 @@ public class playerController : MonoBehaviour, iDamage
     public bool hasKey;
     bool isShooting;
     public bool isFlameThrower;
+    bool skillTreeOpwn;
+    
     int jumpedTimes;
     int HPOrig;
 
@@ -69,11 +77,18 @@ public class playerController : MonoBehaviour, iDamage
             jumpedTimes = 0;
             playerVel = Vector3.zero;
         }
-
+       
         if (SkillManager.instance.skillMenuActive == null)
         {
-            Movement();
+                Movement();
+            
+            skillTreeOpwn = false;
         }
+        else
+        {
+            skillTreeOpwn = true;
+        }
+        
         if (Input.GetButton("Sprint"))
         {
             speed = 12;
@@ -84,7 +99,7 @@ public class playerController : MonoBehaviour, iDamage
         }
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         //Lets the player shoot the fireball when Lclick. If using the flamethrower, player will not be able to shoot.
-        if (Input.GetButtonDown("Shoot") && !isFlameThrower && !gameManager.instance.isPaused)
+        if (Input.GetButtonDown("Shoot") && !skillTreeOpwn && !isFlameThrower && !gameManager.instance.isPaused)
         {
             aud.PlayOneShot(audFireball, fireballVol);
             StartCoroutine(shootFireball());
@@ -117,8 +132,10 @@ public class playerController : MonoBehaviour, iDamage
     void Movement()
     {
         moveDir = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward);
-        controller.Move(moveDir * speed * Time.deltaTime);
 
+        
+        controller.Move(moveDir * speed * Time.deltaTime);
+        
         if (Input.GetButtonDown("Jump") && jumpedTimes < maxJumps)
         {
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], jumpVol);
@@ -127,9 +144,18 @@ public class playerController : MonoBehaviour, iDamage
         }
 
         playerVel.y -= gravity * Time.deltaTime;
+
         controller.Move(playerVel * Time.deltaTime);
+        
+
+        
     }
 
+
+
+
+  
+    
     //Creates and launches a fireball from shootPos. Not automatic, so player needs to click Lclick each time they want to shoot.
     IEnumerator shootFireball()
     {
@@ -164,13 +190,16 @@ public class playerController : MonoBehaviour, iDamage
 
     public void takeDamage(int amount)
     {
-        playerHP -= amount;
-        updatePlayerUI();
-        StartCoroutine(playerWasHit());
-        if (playerHP <= 0)
-        {
-            gameManager.instance.youLoser();
-        }
+        
+        
+            playerHP -= amount;
+            updatePlayerUI();
+            StartCoroutine(playerWasHit());
+            if (playerHP <= 0)
+            {
+                gameManager.instance.youLoser();
+            }
+        
     }
 
     public void updatePlayerUI()
