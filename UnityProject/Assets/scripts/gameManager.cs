@@ -25,6 +25,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLoser;
     public GameObject menuCheckPoint;
     public TMP_Text objText;
+    public TMP_Text secObjText;
     public GameObject playerIsHit;
     public Image playerHPBar;
     public Image fireBar;

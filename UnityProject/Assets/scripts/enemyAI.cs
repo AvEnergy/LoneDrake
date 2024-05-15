@@ -179,6 +179,7 @@ public class enemyAI : MonoBehaviour, iDamage
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
+            gameManager.instance.questItems.Add(this.tag);
             Destroy(gameObject);
             gameManager.instance.givePlayerXP(30);
         }
