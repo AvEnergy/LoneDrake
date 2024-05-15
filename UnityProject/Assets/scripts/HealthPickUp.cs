@@ -27,10 +27,6 @@ public class HealthPickUp : MonoBehaviour
         {
             aud.PlayOneShot(healSound);
         }
-        else
-        {
-            Debug.Log("NO PICKUP SOUND");
-        }
         gameManager.instance.playerScript.GetHP(amount);
         Destroy(gameObject);
     }

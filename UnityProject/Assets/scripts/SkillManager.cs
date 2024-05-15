@@ -17,15 +17,14 @@ public class SkillManager : MonoBehaviour
 
     [Header("--------Skill Tree Elements-------")]
 
-    [SerializeField] string[] skillNames;
+
     [SerializeField] GameObject skilltree;
     public List<int> level_To_Unlock;
+    public List<string> skillsUnlocked;
     public List<int> time_Duration;
     public List<SetSkills> skills;
-
     public int skillpoints;
 
-    public Button currentButton;
     
     public bool displayOn;
     // Start is called before the first frame update
@@ -46,21 +45,22 @@ public class SkillManager : MonoBehaviour
 
         SetLevelUnlock();
 
-        skillpoints = 1;
-        playerlvl = 10;
+       
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        
         if(Input.GetKeyUp(KeyCode.M))
         {
-            if(skillMenuActive == null)
+            if(skillMenuActive == null && gameManager.instance.menuActive == null)
             {
                 SkillMenuOn();
             }
         }
+
     }
 
     public void SkillMenuOn()
@@ -85,7 +85,7 @@ public class SkillManager : MonoBehaviour
 
     public void SetLevelUnlock()
     {
-        level_To_Unlock = new List<int>() { 1, 5, 10, 15, 20};
+        level_To_Unlock = new List<int>() { 1, 2, 3, 4, 5};
     }
     
 }

@@ -20,7 +20,7 @@ public class gameManager : MonoBehaviour
     public int XP;
     public int skillPoint;
 
-    [SerializeField] GameObject menuActive;
+    [SerializeField] public GameObject menuActive;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject menuPaused;
     [SerializeField] GameObject menuWinner;
@@ -80,7 +80,7 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel") && menuActive == null)
+        if (Input.GetButtonDown("Cancel") && menuActive == null && SkillManager.instance.skillMenuActive == null)
         {
             MenuPaused();
         }
@@ -116,7 +116,7 @@ public class gameManager : MonoBehaviour
     public void MenuPaused()
     {
         statePaused();
-        menuActive = menuPaused; 
+        menuActive = menuPaused;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(PauseButtonSelected);
         menuActive.SetActive(isPaused);
@@ -136,7 +136,11 @@ public class gameManager : MonoBehaviour
     {
         statePaused();
         menuActive = menuLoser;
-        //SkillManager.instance.skillMenuActive.SetActive(false);
+        if (SkillManager.instance.skillMenuActive != null)
+        {
+            SkillManager.instance.skillMenuActive.SetActive(false);
+            SkillManager.instance.skillMenuActive = null;
+        }
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(LoseButtonSelected);
         menuActive.SetActive(menuLoser);

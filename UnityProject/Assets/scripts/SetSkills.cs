@@ -10,10 +10,10 @@ public class SetSkills : MonoBehaviour
     public enum LevelRequired 
     {
         one,
+        two,
+        three, 
+        four,
         five,
-        ten, 
-        fifteen,
-        twenty,
     };
     public void GetName()
     {
@@ -22,6 +22,7 @@ public class SetSkills : MonoBehaviour
 
     public void unLockSkill()
     {
+        GetName();
         foreach (var skill in SkillManager.instance.skills)
         {
             if (skill.name == gameObject.name)
@@ -29,40 +30,57 @@ public class SetSkills : MonoBehaviour
                 DefineSkill(gameObject.name);
             }
         }
+
+        
     }
     public void DefineSkill(string name)
     {
         switch(name)
         {
             case "Invincibility":
-                if(SkillManager.instance.skillpoints > 0 && SkillManager.instance.playerlvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.one])
+                if(gameManager.instance.skillPoint >= 0 && gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.one])
                 {
-                    SkillManager.instance.skillpoints--;
-                    GetComponent<Image>().color = Color.green;
-                    //StartCoroutine(gameManager.instance.playerScript.duration());           
+                    gameManager.instance.skillPoint--;
+                    GetComponent<Image>().color = Color.blue; 
                 }
                 break;
 
             case "DoubleJump":
-                if(SkillManager.instance.playerlvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.five])
+                if(gameManager.instance.skillPoint >= 2 && gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.two])
                 {
-                    GetComponent<Image>().color = Color.blue;
+                    gameManager.instance.skillPoint -= 2;
+                    GetComponent<Image>().color = Color.green;
                 }
                 break;
 
             case "AoE":
+                if (gameManager.instance.skillPoint >= 2 && gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.three])
+                {
+                    gameManager.instance.skillPoint -= 2;
+                    GetComponent<Image>().color = Color.green;
+                }
                 break;
 
             case "Dash":
+                if (gameManager.instance.skillPoint >= 2 && gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.four])
+                {
+                    gameManager.instance.skillPoint -= 2;
+                    GetComponent<Image>().color = Color.green;
+                }
                 break;
-
             case "Flame":
-                SkillManager.instance.skillpoints--;
-                gameManager.instance.playerScript.isFlameThrower = true;
-                StartCoroutine(duration(3));
-                gameManager.instance.playerScript.isFlameThrower = false;
+                if (gameManager.instance.skillPoint >= 3 && gameManager.instance.currLvl>= SkillManager.instance.level_To_Unlock[(int)LevelRequired.five])
+                {
+                    gameManager.instance.skillPoint -= 3;
+                    GetComponent<Image>().color = Color.green;
+                }
                 break;
             case "Glide":
+                if (gameManager.instance.skillPoint >= 3 && gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.five])
+                {
+                    gameManager.instance.skillPoint -= 3;
+                    GetComponent<Image>().color = Color.green;
+                }
                 break;
             default:
                 StartCoroutine(Locked());
@@ -76,11 +94,6 @@ public class SetSkills : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         GetComponent<Image>().color= Color.white;
     }
-    IEnumerator duration(int amount)
-    {
-        GetComponent<Image>().color = Color.green;
-        yield return new WaitForSeconds(amount);
-        GetComponent<Image>().color = Color.white;
-    }
-
+    
+   
 }
