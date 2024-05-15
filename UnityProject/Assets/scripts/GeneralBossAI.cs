@@ -34,6 +34,11 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     [SerializeField] int animSpeedTrans;
     [SerializeField] int boostedAnimSpeedTrans;
 
+    [Header("-------Boss Stages-------")]
+    
+    [SerializeField] bool Stage2;
+    [SerializeField] bool Stage3;
+
     [Header("-------Game Objects------")]
     [SerializeField] NavMeshAgent agent;
     public GameObject playertemp;
@@ -66,6 +71,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     private int currentHealth;
     private float currentAttackCooldown;
     private bool stage1Complete = false;
+    private bool stage2Complete = false;
 
     // Start is called before the first frame update
     void Start()
@@ -200,16 +206,30 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         hp -= amount;
         agent.SetDestination(gameManager.instance.player.transform.position);
         //StartCoroutine(flashRed());
-
-        if (!stage1Complete && hp <= maxHealth * .5f)
+        if (Stage2 == true)
         {
-            Debug.Log("Boss health below 50%!");
-            speed += 4;
-            attackCooldown /= 2;
-            meleeDmg += 5;
-            stage1Complete = true;
+            if (!stage1Complete && hp <= maxHealth * .5f)
+            {
+                Debug.Log("Boss health below 50%!");
+                speed += 4;
+                attackCooldown /= 2;
+                meleeDmg += 5;
+                stage1Complete = true;
+                currentHealth = hp;
+            }
         }
-        currentHealth = hp;
+        if (Stage3 == true)
+        {
+            if (!stage2Complete && hp <= maxHealth * .25f)
+            {
+                Debug.Log("Boss health below 25%!");
+                speed += 4;
+                attackCooldown /= 2;
+                meleeDmg += 5;
+                stage2Complete = true;
+                currentHealth = hp;
+            }
+        }
         if (hp <= 0)
         {
             anim.SetTrigger("Death");
