@@ -32,6 +32,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     [SerializeField] int pauseTimer;
     [SerializeField] int viewCone;
     [SerializeField] int animSpeedTrans;
+    [SerializeField] int boostedAnimSpeedTrans;
 
     [Header("-------Game Objects------")]
     [SerializeField] NavMeshAgent agent;
@@ -58,6 +59,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     float angleToPlayer;
     float stoppingDistOrig;
     float moveSpeed;
+    int maxHealth;
     Vector3 startingPos;
     Vector3 playerDir;
 
@@ -68,11 +70,11 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = hp;
+        maxHealth = hp;
         currentAttackCooldown = attackCooldown;
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
-        myColor = model.material.color;
+       // myColor = model.material.color;
     }
 
     // Update is called once per frame
@@ -80,6 +82,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     {
         float animSpeed = agent.velocity.normalized.magnitude;
         float moveSpeedValue = stage1Complete ? boostedMoveSpeed : speed;
+        agent.speed = moveSpeedValue;
         anim.SetFloat("Blend", Mathf.Lerp(anim.GetFloat("Blend"), animSpeed, Time.deltaTime * animSpeedTrans));
         if (iKnowWherePlayerIs)
         {
@@ -98,10 +101,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         {
             StartCoroutine(playfootSteps());
         }
-        if (!stage1Complete && currentHealth <= hp * 0.5f)
-        {
-            stageTransition();
-        }
+       
     }
     IEnumerator roam()
     {
@@ -199,20 +199,31 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     {
         hp -= amount;
         agent.SetDestination(gameManager.instance.player.transform.position);
-        StartCoroutine(flashRed());
+        //StartCoroutine(flashRed());
+
+        if (!stage1Complete && hp <= maxHealth * .5f)
+        {
+            Debug.Log("Boss health below 50%!");
+            speed += 4;
+            attackCooldown /= 2;
+            meleeDmg += 5;
+            stage1Complete = true;
+        }
+        currentHealth = hp;
         if (hp <= 0)
         {
+            anim.SetTrigger("Death");
             Destroy(gameObject);
             gameManager.instance.givePlayerXP(30);
         }
     }
 
-    IEnumerator flashRed()
+    /*IEnumerator flashRed()
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = myColor;
-    }
+    }*/
 
     public void shootThem()
     {
@@ -235,11 +246,5 @@ public class GeneralBossAI : MonoBehaviour, iDamage
                 }
             }
         }
-    }
-    private void stageTransition()
-    {
-        stage1Complete = true;
-        moveSpeed = boostedMoveSpeed;
-        attackCooldown = boostedAttackCooldown;
     }
 }
