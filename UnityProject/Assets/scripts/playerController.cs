@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour, iDamage
     [SerializeField] CharacterController controller;
 
     [Header("-------Player Stats------")]
-    [SerializeField] int playerHP;
+    [SerializeField] public int playerHP;
     [SerializeField] float playerHeat;
     [SerializeField] int speed;
     [SerializeField] int jumpSpeed;
@@ -84,15 +84,15 @@ public class playerController : MonoBehaviour, iDamage
             StartCoroutine(shootFireball());
         }
         //Turns the flamethrower animation on when player clicks Rclick.
-        if (Input.GetButtonDown("Fire2") && HeatPlayer > 0)
+        if (Input.GetButtonDown("Fire2") && HeatPlayer > 0f)
         {
+            aud.PlayOneShot(audFlame[Random.Range(0, audFlame.Length)], flameVol);
             flamethrower.SetActive(true);
             isFlameThrower = true;
         }
         //Raycasting for the flamethrower.
-        if (Input.GetButton("Fire2") && !isShooting)
+        if (Input.GetButton("Fire2") && !isShooting && HeatPlayer > 0f)
         {
-            aud.PlayOneShot(audFlame[Random.Range(0, audFlame.Length)], flameVol);
             StartCoroutine(shootFlameThrower());
             if (HeatPlayer <= 0)
             {

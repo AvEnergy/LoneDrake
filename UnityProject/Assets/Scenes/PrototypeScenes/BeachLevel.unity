@@ -6340,6 +6340,10 @@ PrefabInstance:
       propertyPath: textCreator
       value: 
       objectReference: {fileID: 11400000, guid: 6b31589b588850d4b8ca9c6543688782, type: 2}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: expectedQuestAmount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4488969624042648052, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
       propertyPath: m_Name
       value: CapsuleNPC

@@ -2869,6 +2869,7 @@ MonoBehaviour:
   playerHPBar: {fileID: 4340480766962259453}
   fireBar: {fileID: 2781718333818486031}
   bossHp: {fileID: 8259873633548303197}
+  questItems: []
   player: {fileID: 0}
   playerSpawnPos: {fileID: 0}
   playerScript: {fileID: 0}

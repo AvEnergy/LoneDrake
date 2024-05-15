@@ -7,16 +7,21 @@ using UnityEditor.Experimental.GraphView;
 using System.Diagnostics.Contracts;
 using Unity.VisualScripting;
 using System;
+using System.Diagnostics.Tracing;
 
 public class NPC : MonoBehaviour
 {
     [SerializeField] GameObject speechBubble;
+    [SerializeField] int expectedQuestAmount;
     [SerializeField] Transform model;
     [SerializeField] TextWriter textWriter;
     [SerializeField] TextMeshPro message;
     [SerializeField] NPCTextCreator textCreator;
     bool pauseText;
     bool playerInRange;
+
+    int counter;
+    
     
     private int currPhrase;
     private int currDial;
@@ -25,6 +30,7 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        counter = 0;
         currPhrase = 0;
         playerInRange = false;
         questComplete = false;
@@ -50,6 +56,24 @@ public class NPC : MonoBehaviour
             currPhrase = 0;
             speechBubble.SetActive(true);
             playerInRange = true;
+            for(int i = 0; i < gameManager.instance.questItems.Count; i++)
+            {
+                bool doesHave = gameManager.instance.questItems[i].Contains("GemQuest");
+                if (doesHave)
+                {
+                    counter++;
+                }
+            }
+            if (expectedQuestAmount == counter && !questComplete)
+            {
+                questComplete = true;
+                counter = 0;
+                gameManager.instance.givePlayerXP(100);
+            }
+            else
+            {
+                counter = 0;
+            }
         }
     }
 

@@ -11,6 +11,8 @@ public class LevelLoader : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            PersistantData.XpToKeep = gameManager.instance.XP;
+            PersistantData.LevelToKeep = gameManager.instance.currLvl;
             LoadNextlevel();
         }
     }

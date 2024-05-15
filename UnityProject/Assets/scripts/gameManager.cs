@@ -51,6 +51,13 @@ public class gameManager : MonoBehaviour
         playerSpawnPos = GameObject.FindWithTag("Player Spawn POS");
         playerScript = player.GetComponent<playerController>();
         bossNotKilled = true;
+        if (PersistantData.XpToKeep != 0 || PersistantData.LevelToKeep !=0)
+        {
+            XP = PersistantData.XpToKeep;
+            currLvl = PersistantData.LevelToKeep;
+            levelText.text = currLvl.ToString();
+            playerScript.updatePlayerUI();
+        }
     }
 
     // Update is called once per frame

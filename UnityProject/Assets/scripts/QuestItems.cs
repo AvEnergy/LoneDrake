@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class QuestItems : MonoBehaviour
 {
-    public GameObject gem;
-    public string gemTag;
+    GameObject gem;
+    string gemTag;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class QuestItems : MonoBehaviour
 
     void pickUp()
     {
-        Debug.Log(gameManager.instance.questItems.Count);
+        Debug.Log(gameManager.instance.questItems.Contains("GemQuest"));
         gameManager.instance.questItems.Add(gemTag);
         Destroy(gameObject);
     }

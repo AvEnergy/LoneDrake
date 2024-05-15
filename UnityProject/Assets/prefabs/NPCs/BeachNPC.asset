@@ -19,4 +19,6 @@ MonoBehaviour:
   quest:
   - I really want some of those gems. Can you bring me 8 Gems?
   - Be careful, the crabs out there are very mean.
-  thanks: []
+  thanks:
+  - Thank you so much!!
+  - Here is some XP!
