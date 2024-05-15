@@ -11,10 +11,15 @@ using System.Diagnostics.Tracing;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField] GameObject speechBubble;
+    [Header("------Required inputs----------")]
     [SerializeField] int expectedQuestAmount;
+    [SerializeField] int XPtoGivePlayer;
+    [SerializeField] string TagToCheck;
+    [SerializeField] string objDetails;
+
+    [Header("--------GameObjects--------")]
+    [SerializeField] GameObject speechBubble;
     [SerializeField] Transform model;
-    [SerializeField] TextWriter textWriter;
     [SerializeField] TextMeshPro message;
     [SerializeField] NPCTextCreator textCreator;
     bool pauseText;
@@ -58,7 +63,7 @@ public class NPC : MonoBehaviour
             playerInRange = true;
             for(int i = 0; i < gameManager.instance.questItems.Count; i++)
             {
-                bool doesHave = gameManager.instance.questItems[i].Contains("GemQuest");
+                bool doesHave = gameManager.instance.questItems[i].Contains(TagToCheck);
                 if (doesHave)
                 {
                     counter++;
@@ -68,7 +73,7 @@ public class NPC : MonoBehaviour
             {
                 questComplete = true;
                 counter = 0;
-                gameManager.instance.givePlayerXP(100);
+                gameManager.instance.givePlayerXP(XPtoGivePlayer);
             }
             else
             {
@@ -116,10 +121,12 @@ public class NPC : MonoBehaviour
                 }
             case 1: 
                 {
+                    gameManager.instance.secObjText.text = objDetails;
                     return textCreator.quest; 
                 }
             case 2: 
                 {
+                    gameManager.instance.secObjText.text = string.Empty;
                     return textCreator.thanks; 
                 }
         }

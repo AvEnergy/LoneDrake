@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Player Spawn POS
   - GemQuest
+  - Dwarf
   layers:
   - Default
   - TransparentFX
