@@ -1223,6 +1223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeVariant1
       objectReference: {fileID: 0}
+    - target: {fileID: 6980408917806656022, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: m_BaseOffset
+      value: -0.22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1236,6 +1240,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3045522486494437000, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
+      propertyPath: m_BaseOffset
+      value: -0.22
+      objectReference: {fileID: 0}
     - target: {fileID: 9051058637641572304, guid: 7da10e67f2324384f9279f6fbd097a55, type: 3}
       propertyPath: m_Name
       value: Goblin_Ranger_R1 (2)
