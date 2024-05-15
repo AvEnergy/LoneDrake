@@ -205,8 +205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotSpeed: 90
   aud: {fileID: 8473644962084556866}
-  audItem: {fileID: 8300000, guid: d447bf6e0a4f22c49846bfb5c0d44e2d, type: 3}
-  ItemVol: 4.5
 --- !u!82 &8473644962084556866
 AudioSource:
   m_ObjectHideFlags: 0
@@ -217,8 +215,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: d447bf6e0a4f22c49846bfb5c0d44e2d, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -263,7 +261,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.223
       inSlope: 0
       outSlope: 0
       tangentMode: 0

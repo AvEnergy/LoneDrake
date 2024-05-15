@@ -6,8 +6,6 @@ public class HealthPickUp : MonoBehaviour
 {
     [SerializeField]int rotSpeed;
     [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip audItem;
-    [SerializeField] float ItemVol;
 
     void Update()
     {
@@ -17,8 +15,9 @@ public class HealthPickUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            aud.Play();
             Pickup();
-            aud.PlayOneShot(audItem, ItemVol);
+            
         }
     }
 

@@ -14,7 +14,7 @@ public class gameManager : MonoBehaviour
     [Header("-------XPtracking------")]
     [SerializeField] AudioSource levelUpSound;
     public Image XPBar;
-    public TMP_Text levelText;
+    
     public int currLvl;
     public int XP;
 
@@ -23,6 +23,15 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPaused;
     [SerializeField] GameObject menuWinner;
     [SerializeField] GameObject menuLoser;
+
+
+
+    [Header("-------XPtracking------")]
+    public GameObject PauseButtonSelected;
+    public GameObject SkillTreeButtonSelected;
+    public GameObject LoseButtonSelected;
+    public GameObject WinButtonSelected;
+
     public GameObject menuCheckPoint;
     public TMP_Text objText;
     public TMP_Text secObjText;
@@ -42,7 +51,12 @@ public class gameManager : MonoBehaviour
     public int enemyCount;
     public bool bossNotKilled;
 
-    
+    public TMP_Text levelText;
+
+    public TMP_Text killedby;
+
+
+
 
     // Start is called before the first frame update
     void Awake()
