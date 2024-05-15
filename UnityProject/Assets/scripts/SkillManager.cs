@@ -11,7 +11,7 @@ public class SkillManager : MonoBehaviour
     public int playerlvl;
 
     [Header("-----SkillTree UI------")]
-    [SerializeField] GameObject skillMenuActive;
+    [SerializeField] public GameObject skillMenuActive;
     [SerializeField] GameObject skillMenu;
 
 

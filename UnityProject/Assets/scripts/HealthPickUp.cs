@@ -6,6 +6,7 @@ public class HealthPickUp : MonoBehaviour
 {
     [SerializeField]int rotSpeed;
     [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip healSound;
 
     void Update()
     {
@@ -15,15 +16,21 @@ public class HealthPickUp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            aud.Play();
-            Pickup();
-            
+            Pickup();            
         }
     }
 
     public void Pickup()
     {
         int amount = Random.Range(25, 60);
+        if (healSound != null)
+        {
+            aud.PlayOneShot(healSound);
+        }
+        else
+        {
+            Debug.Log("NO PICKUP SOUND");
+        }
         gameManager.instance.playerScript.GetHP(amount);
         Destroy(gameObject);
     }

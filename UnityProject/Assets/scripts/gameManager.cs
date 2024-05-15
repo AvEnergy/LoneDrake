@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class gameManager : MonoBehaviour
 {
@@ -81,9 +82,7 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && menuActive == null)
         {
-            statePaused();
-            menuActive = menuPaused;
-            menuActive.SetActive(isPaused);
+            MenuPaused();
         }
         levelObjective();
     }
@@ -110,17 +109,38 @@ public class gameManager : MonoBehaviour
     {
         if (bossNotKilled == false)
         {
-            statePaused();
-            menuActive = menuWinner;
-            menuActive.SetActive(isPaused);
+            winner();
         }
+    }
+
+    public void MenuPaused()
+    {
+        statePaused();
+        menuActive = menuPaused; 
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(PauseButtonSelected);
+        menuActive.SetActive(isPaused);
+
+    }
+    public void winner()
+    {
+        statePaused();
+        menuActive = menuWinner;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(WinButtonSelected);
+        menuActive.SetActive(isPaused);
+
     }
     //Called if player loses all their HP.
     public void youLoser()
     {
         statePaused();
         menuActive = menuLoser;
+        //SkillManager.instance.skillMenuActive.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(LoseButtonSelected);
         menuActive.SetActive(menuLoser);
+      
     }
   
     public void levelObjective()

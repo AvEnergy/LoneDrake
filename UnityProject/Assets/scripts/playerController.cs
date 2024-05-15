@@ -69,8 +69,11 @@ public class playerController : MonoBehaviour, iDamage
             jumpedTimes = 0;
             playerVel = Vector3.zero;
         }
-       
-            Movement();    
+
+        if (SkillManager.instance.skillMenuActive == null)
+        {
+            Movement();
+        }
         if (Input.GetButton("Sprint"))
         {
             speed = 12;
