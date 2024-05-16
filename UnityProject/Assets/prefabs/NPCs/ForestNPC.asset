@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06e6760372d5de943a975bb1856020b4, type: 3}
-  m_Name: BeachNPC
+  m_Name: ForestNPC
   m_EditorClassIdentifier: 
   greetings:
-  - Hello, what a wonderful day at the beach.
-  - My name is Bum.
-  - There's treasure laying around the beach.
+  - Hello, welcome to the forest.
+  - My name is Bush.
   quest:
-  - I really want some of those gems. Can you bring me 3 Gems?
+  - Can you go over to that fortress and clear it of Goblins?
   thanks:
-  - Thank you so much!!
-  - Here is some XP!
+  - Thank you! Now they won't bother me anymore.

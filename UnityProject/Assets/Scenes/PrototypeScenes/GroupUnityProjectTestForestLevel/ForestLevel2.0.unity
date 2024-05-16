@@ -6810,6 +6810,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: TagToCheck
+      value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: objDetails
+      value: Clear the camp!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: textCreator
+      value: 
+      objectReference: {fileID: 11400000, guid: 95eef47060fdb0c48a308df4fb51b8c6, type: 2}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: XPtoGivePlayer
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: expectedQuestAmount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4488969624042648052, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
       propertyPath: m_Name
       value: CapsuleNPC

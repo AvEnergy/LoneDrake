@@ -4407,10 +4407,10 @@ MonoBehaviour:
   viewCone: 50
   animSpeedTrans: 4
   boostedAnimSpeedTrans: 6
-  Stage2: 1
-  Stage3: 1
+  Stage2: 0
+  Stage3: 0
   agent: {fileID: 1752391958}
-  playertemp: {fileID: 0}
+  playertemp: {fileID: 430805115}
   model: {fileID: 13700008, guid: 34bf333920b9886469ea633c17e22d4d, type: 3}
   anim: {fileID: 1752391961}
   arrow: {fileID: 0}

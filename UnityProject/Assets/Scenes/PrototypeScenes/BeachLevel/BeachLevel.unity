@@ -5355,15 +5355,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 396.76
+      value: 396.654
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.432
+      value: 18.005
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 203.575
+      value: 203.286
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5660,7 +5660,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454706524}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
@@ -5702,15 +5702,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 394.76
+      value: 409.38
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.83
+      value: 18.012
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 207.13
+      value: 221.55
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7274,21 +7274,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gem_RubyRed (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 1765939840544900, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
-      propertyPath: m_TagString
-      value: GemQuest
-      objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 392.471
+      value: 403.467
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.37
+      value: 18.007
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 203.945
+      value: 213.543
       objectReference: {fileID: 0}
     - target: {fileID: 4965729613670118, guid: 60a485b6c8da55444ad5564f3c235c07, type: 3}
       propertyPath: m_LocalRotation.w

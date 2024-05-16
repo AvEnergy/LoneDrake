@@ -1073,6 +1073,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: TagToCheck
+      value: Dwarf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: objDetails
+      value: Kill the Dwarfs
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: textCreator
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f526ac9ce84deb41aa3a1a5f80685db, type: 2}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: XPtoGivePlayer
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406105521371905224, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
+      propertyPath: expectedQuestAmount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4488969624042648052, guid: 627e4c3266b2ff942a043c096d303e20, type: 3}
       propertyPath: m_Name
       value: CapsuleNPC
@@ -1295,67 +1315,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 89.972, y: 0, z: 89.957}
---- !u!1001 &801611212
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 489.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 58.395912
-      objectReference: {fileID: 0}
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 619.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.1856581
-      objectReference: {fileID: 0}
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.9826144
-      objectReference: {fileID: 0}
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -158.601
-      objectReference: {fileID: 0}
-    - target: {fileID: 974954754977154751, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1934212114096619192, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_Name
-      value: MeleeVariant1 (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1934212114096619192, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
-      propertyPath: m_TagString
-      value: Dwarf
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
 --- !u!1001 &814937822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1731,7 +1690,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905574743}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
@@ -3839,7 +3798,6 @@ SceneRoots:
   - {fileID: 379015311}
   - {fileID: 1194444217}
   - {fileID: 2063901182}
-  - {fileID: 801611212}
   - {fileID: 131204720}
   - {fileID: 272136564}
   - {fileID: 1740530132}
