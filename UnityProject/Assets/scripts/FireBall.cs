@@ -21,7 +21,7 @@ public class FireBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger || other.CompareTag("Player"))
+        if (other.isTrigger)
         {
             return;
         }

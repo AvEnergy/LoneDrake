@@ -92,7 +92,7 @@ public class enemyAI : MonoBehaviour, iDamage
             {
                 destinationChosen = true;
                 agent.stoppingDistance = 0;
-                yield return new WaitForSeconds(pauseTimer);
+                yield return new WaitForSeconds(Random.Range(2, 6));
                 Vector3 randomPos = Random.insideUnitSphere * roamDist;
                 randomPos += startingPos;
                 NavMeshHit hit;
