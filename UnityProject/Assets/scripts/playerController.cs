@@ -254,7 +254,7 @@ public class playerController : MonoBehaviour, iDamage
         if(arrow != null)
         {
             if (playerHP <=0) 
-            gameManager.instance.killedby.text = "Goblin's Arrow";
+            gameManager.instance.killedby.text = "Golbin's Arrow";
         }
         if(fireball != null)
         {

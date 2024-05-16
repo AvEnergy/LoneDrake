@@ -6,21 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameScenes/MainMenu.unity
+    path: Assets/Scenes/PrototypeScenes/MainMenu.unity
     guid: d744a43290198f04aad5eed89f74f89c
   - enabled: 1
-    path: Assets/Scenes/GameScenes/VolcanoLevel/VolcanoLevel.unity
-    guid: d9bc7335c2356ad4ba77f3d9c08c230f
+    path: Assets/Scenes/PrototypeScenes/GroupUnityProjectTestForestLevel/ForestLevel.unity
+    guid: 8a5bfc6fca96da24983f09272adc2623
   - enabled: 1
-    path: Assets/Scenes/GameScenes/GroupUnityProjectTestForestLevel/ForestLevel2.0/ForestLevel2.0.unity
-    guid: 6970f395bd01b5e4dae2027c888f1443
-  - enabled: 1
-    path: Assets/Scenes/GameScenes/DwarfCastle/DwarfCastle.unity
+    path: Assets/Scenes/PrototypeScenes/DwarfCastle/DwarfCastle.unity
     guid: 2f9c0d69c6ced3d44aca0dbd99a29521
   - enabled: 1
-    path: Assets/Scenes/GameScenes/BossLevel/BossLevel.unity
+    path: Assets/Scenes/PrototypeScenes/BossLevel/BossLevel.unity
     guid: 5039c5e96a91a07498cb1a3fff40f497
-  - enabled: 1
-    path: Assets/Scenes/GameScenes/BeachLevel/BeachLevel.unity
-    guid: e2b77b4b7b80149438f2f9734543d9d1
   m_configObjects: {}
