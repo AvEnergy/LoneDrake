@@ -34,18 +34,20 @@ public class SkillManager : MonoBehaviour
         {
             instance = this;
         }
+       
     }
 
     private void Start()
     {
         foreach(var skill in skilltree.GetComponentsInChildren<SetSkills>()) 
-        { 
-            skills.Add(skill); 
+        {
+            if (skill != null)
+            {
+                skills.Add(skill);
+            }
         }
 
         SetLevelUnlock();
-
-       
     }
 
 

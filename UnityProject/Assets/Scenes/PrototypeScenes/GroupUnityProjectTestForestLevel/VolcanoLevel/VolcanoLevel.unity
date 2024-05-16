@@ -1480,6 +1480,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8674413985407769883, guid: fef5421e3e81c954aa92ce17b770e391, type: 3}
+      propertyPath: SkillTreeButtonSelected
+      value: 
+      objectReference: {fileID: 1040104668}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1775,6 +1779,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+--- !u!1 &1040104668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 253098869131682400, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
+  m_PrefabInstance: {fileID: 201745608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1049821007
 PrefabInstance:
   m_ObjectHideFlags: 0
