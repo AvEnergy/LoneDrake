@@ -68,7 +68,7 @@ public class NPC : MonoBehaviour
                     counter++;
                 }
             }
-            if (expectedQuestAmount == counter && !questComplete)
+            if (expectedQuestAmount <= counter && !questComplete)
             {
                 questComplete = true;
                 counter = 0;

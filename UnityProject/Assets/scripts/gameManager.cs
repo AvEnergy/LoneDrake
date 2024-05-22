@@ -149,26 +149,27 @@ public class gameManager : MonoBehaviour
   
     public void levelObjective()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            objText.text = "Head to the Dwarf Fortress.";
-        }
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            if(!gameManager.instance.playerScript.hasKey)
-            {
-                objText.text = "Find the key.";
-            }
-            else
-            {
-                objText.text = "Enter the fortess.";
-            }
+        objText.text = "Save Mom!!";
+        //if (SceneManager.GetActiveScene().buildIndex == 0)
+        //{
+        //    objText.text = "Head to the Dwarf Fortress.";
+        //}
+        //if (SceneManager.GetActiveScene().buildIndex == 1)
+        //{
+        //    if(!gameManager.instance.playerScript.hasKey)
+        //    {
+        //        objText.text = "Find the key.";
+        //    }
+        //    else
+        //    {
+        //        objText.text = "Enter the fortess.";
+        //    }
 
-        }
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            objText.text = "Kill the wizard and save mom.";
-        }
+        //}
+        //if (SceneManager.GetActiveScene().buildIndex == 2)
+        //{
+        //    objText.text = "Kill the wizard and save mom.";
+        //}
     }
 
     public void givePlayerXP(int XPamount)

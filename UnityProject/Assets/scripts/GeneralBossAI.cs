@@ -254,20 +254,20 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     }
 
     //Function being called by animation.
-    public void Attack()
-    {
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward, Color.red);
-        if (Physics.Raycast(shootPos.position, transform.forward, out hit, meleeDist))
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                iDamage dmg = hit.collider.GetComponent<iDamage>();
-                if (hit.transform != transform && dmg != null)
-                {
-                    dmg.takeDamage(meleeDmg);
-                }
-            }
-        }
-    }
+    //public void Attack()
+    //{
+    //    RaycastHit hit;
+    //    Debug.DrawRay(transform.position, transform.forward, Color.red);
+    //    if (Physics.Raycast(shootPos.position, transform.forward, out hit, meleeDist))
+    //    {
+    //        if (hit.collider.CompareTag("Player"))
+    //        {
+    //            iDamage dmg = hit.collider.GetComponent<iDamage>();
+    //            if (hit.transform != transform && dmg != null)
+    //            {
+    //                dmg.takeDamage(meleeDmg);
+    //            }
+    //        }
+    //    }
+    //}
 }
