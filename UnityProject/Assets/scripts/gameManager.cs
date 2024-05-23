@@ -38,9 +38,13 @@ public class gameManager : MonoBehaviour
     public TMP_Text objText;
     public TMP_Text secObjText;
     public GameObject playerIsHit;
+
+
+    [Header("-----FIllBars-----")]
     public Image playerHPBar;
     public Image fireBar;
     public Image bossHp;
+    
 
     public List<string> questItems;
 

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class playerController : MonoBehaviour, iDamage
+public class playerController : MonoBehaviour, iDamage, IgnoreDamage
 {
     [SerializeField] CharacterController controller;
 
@@ -45,6 +45,7 @@ public class playerController : MonoBehaviour, iDamage
     bool playingSteps;
     public bool hasKey;
     bool isShooting;
+    bool isInvincible;
     public bool isFlameThrower;
     bool skillTreeOpwn;
     
@@ -201,6 +202,37 @@ public class playerController : MonoBehaviour, iDamage
         
     }
 
+    public void IgnoreDamage(int amount)
+    {
+        if (GetInvincible())
+        {
+            amount = 0;
+            takeDamage(amount);
+        }
+        else
+        {
+            takeDamage(amount);
+        }
+    }
+    public bool GetInvincible()
+    {
+        return isInvincible;
+    }
+    public void SetInvicible(bool value)
+    {
+        isInvincible = value;
+    }
+
+    public IEnumerator invincible()
+    {
+        SetInvicible(true);
+        yield return new WaitForSeconds(5);
+        SetInvicible(false);
+    }
+    public void ActivateIMMORTAL()
+    {
+        StartCoroutine(invincible());
+    }
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)playerHP / HPOrig;
