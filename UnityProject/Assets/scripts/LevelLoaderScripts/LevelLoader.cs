@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
+    [SerializeField] GameObject settingsPump;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,5 +28,7 @@ public class LevelLoader : MonoBehaviour
        transition.SetTrigger("Start");
        yield return new WaitForSeconds(1f);
        SceneManager.LoadScene(levelIndex);
+       settingsPump.SetActive(true);
+       settingsPump.SetActive(false);
     }
 }

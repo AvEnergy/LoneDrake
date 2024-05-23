@@ -14,19 +14,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 62.144047
+      value: 403.3
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.07
+      value: 18.94
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.715748
+      value: 342.1
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9356532
+      value: 0.9991764
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3529209
+      value: -0.04057793
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalRotation.z
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 41.332
+      value: -4.651
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -60,6 +60,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.401
       objectReference: {fileID: 0}
+    - target: {fileID: 540236000654923364, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: m_Radius
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 540236000654923364, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: m_Center.y
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 540236000654923364, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: m_Center.z
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 540236000654923364, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 572926129251087423, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: m_Radius
+      value: 0.61
+      objectReference: {fileID: 0}
     - target: {fileID: 572926129251087423, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -70,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 3751271556547115874}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: speed
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: FTBurn
@@ -158,7 +178,7 @@ AudioSource:
   m_GameObject: {fileID: 8626084559451263684}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1029733166126378036, guid: 8d9cb56a6bf1e614fbfbad16eeff5913, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.535
@@ -169,7 +189,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.6665344
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
