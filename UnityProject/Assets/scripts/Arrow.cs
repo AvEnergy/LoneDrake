@@ -24,10 +24,10 @@ public class Arrow : MonoBehaviour
         {
             return;
         }
-        iDamage dmg = other.GetComponent<iDamage>();
+        IgnoreDamage dmg = other.GetComponent<IgnoreDamage>();
         if (dmg != null && !hitHappened)
         {
-            dmg.takeDamage(damage);
+            dmg.IgnoreDamage(damage);
             hitHappened = true;
         }
         Destroy(gameObject);

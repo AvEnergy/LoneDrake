@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class GeneralBossAI : MonoBehaviour, iDamage
@@ -47,6 +48,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     [SerializeField] GameObject arrow;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    [SerializeField] GameObject MINIBOSS_HP_DISPLAY;
 
 
     [Header("--------Audio-------")]
@@ -54,6 +56,11 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     [SerializeField] AudioClip audWalk;
     [SerializeField] float walkVol;
 
+
+
+
+    [Header("-------HP BAR TRACKING")]
+    public Image miniBossHpBar;
 
     Color myColor;
 
@@ -80,6 +87,9 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         currentAttackCooldown = attackCooldown;
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
+        BossHPupdate();
+
+        Debug.Log("Max Health: " + maxHealth + "HP: " + hp);
        // myColor = model.material.color;
     }
 
@@ -181,6 +191,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         if (other.CompareTag("Player"))
         {
             playerinRange = true;
+            MINIBOSS_HP_DISPLAY.SetActive(true);
         }
     }
 
@@ -191,6 +202,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         if (other.CompareTag("Player"))
         {
             playerinRange = false;
+            MINIBOSS_HP_DISPLAY.SetActive(false);
         }
     }
 
@@ -204,6 +216,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     public void takeDamage(int amount)
     {
         hp -= amount;
+        BossHPupdate();
         agent.SetDestination(gameManager.instance.player.transform.position);
         //StartCoroutine(flashRed());
         if (Stage2 == true)
@@ -253,6 +266,10 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         Instantiate(arrow, shootPos.position, transform.rotation);
     }
 
+    public void BossHPupdate()
+    {
+        miniBossHpBar.fillAmount = (float)hp / maxHealth;
+    }
     //Function being called by animation.
     //public void Attack()
     //{

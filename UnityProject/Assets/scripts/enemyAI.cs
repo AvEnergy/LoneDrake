@@ -206,11 +206,11 @@ public class enemyAI : MonoBehaviour, iDamage
         {
             if (hit.collider.CompareTag("Player"))
             {
-                iDamage dmg = hit.collider.GetComponent<iDamage>();
+                IgnoreDamage dmg = hit.collider.GetComponent<IgnoreDamage>();
                 if (hit.transform != transform && dmg != null)
                 {
                     
-                    dmg.takeDamage(meleeDmg);
+                    dmg.IgnoreDamage(meleeDmg);
                     if (gameManager.instance.playerScript.playerHP <= 0)
                     {
                         gameManager.instance.killedby.text = "Enemy Melee";
