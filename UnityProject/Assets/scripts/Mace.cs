@@ -53,5 +53,4 @@ public class Mace : MonoBehaviour
         yield return new WaitForSeconds(cooldowntime);
         canHit = false;
     }
- 
 }

@@ -48,7 +48,9 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     [SerializeField] GameObject arrow;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    [SerializeField] Transform dropPos;
     [SerializeField] GameObject MINIBOSS_HP_DISPLAY;
+    [SerializeField] GameObject loot;
 
 
     [Header("--------Audio-------")]
@@ -173,6 +175,10 @@ public class GeneralBossAI : MonoBehaviour, iDamage
                         anim.SetTrigger("attack");
                         currentAttackCooldown = stage1Complete ? boostedAttackCooldown : attackCooldown;
                     }
+                    if (Stage3 == true)
+                    {
+                        anim.SetTrigger("attack2");
+                    }
                 }
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
@@ -216,6 +222,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     public void takeDamage(int amount)
     {
         hp -= amount;
+        anim.SetTrigger("take_damage");
         BossHPupdate();
         agent.SetDestination(gameManager.instance.player.transform.position);
         //StartCoroutine(flashRed());
@@ -239,9 +246,9 @@ public class GeneralBossAI : MonoBehaviour, iDamage
             if (!stage2Complete && hp <= maxHealth * .25f)
             {
                 Debug.Log("Boss health below 25%!");
-                speed += 4;
-                attackCooldown /= 2;
-                meleeDmg += 5;
+                speed += 8;
+                attackCooldown /= 4;
+                meleeDmg += 10;
                 stage2Complete = true;
                 currentHealth = hp;
             }
@@ -249,8 +256,8 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         if (hp <= 0)
         {
             anim.SetTrigger("Death");
-            Destroy(gameObject);
-            gameManager.instance.givePlayerXP(30);
+            BossDies();
+            Instantiate(loot, dropPos.position, transform.rotation);
         }
     }
 
@@ -270,21 +277,28 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     {
         miniBossHpBar.fillAmount = (float)hp / maxHealth;
     }
+    public void BossDies()
+    {
+        anim.SetTrigger("Death");
+        Destroy(gameObject);
+        gameManager.instance.givePlayerXP(30);
+       
+    }
     //Function being called by animation.
-    //public void Attack()
-    //{
-    //    RaycastHit hit;
-    //    Debug.DrawRay(transform.position, transform.forward, Color.red);
-    //    if (Physics.Raycast(shootPos.position, transform.forward, out hit, meleeDist))
-    //    {
-    //        if (hit.collider.CompareTag("Player"))
-    //        {
-    //            iDamage dmg = hit.collider.GetComponent<iDamage>();
-    //            if (hit.transform != transform && dmg != null)
-    //            {
-    //                dmg.takeDamage(meleeDmg);
-    //            }
-    //        }
-    //    }
-    //}
+    public void Attack()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
+        if (Physics.Raycast(shootPos.position, transform.forward, out hit, meleeDist))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                iDamage dmg = hit.collider.GetComponent<iDamage>();
+                if (hit.transform != transform && dmg != null)
+                {
+                    dmg.takeDamage(meleeDmg);
+                }
+            }
+        }
+    }
 }

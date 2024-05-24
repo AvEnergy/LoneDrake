@@ -36,6 +36,8 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] GameObject arrow;
     [SerializeField] Transform shootPos;
     [SerializeField] Transform headPos;
+    [SerializeField] Transform dropPos;
+    [SerializeField] GameObject loot;
 
 
     [Header("--------Audio-------")]
@@ -182,6 +184,7 @@ public class enemyAI : MonoBehaviour, iDamage
             gameManager.instance.questItems.Add(this.tag);
             Destroy(gameObject);
             gameManager.instance.givePlayerXP(30);
+            Instantiate(loot, dropPos.position, transform.rotation);
         }
     }
 
