@@ -17,10 +17,6 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     [SerializeField] int maxJumps;
     [SerializeField] int gravity;
 
-
-
-
-
     [Header("-------Flamethrower Settings------")]
     [SerializeField] int shootDistance;
     [SerializeField] float shootRate;
@@ -29,7 +25,7 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     [Header("-------GameObjects------")]
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject fireball;
-    [SerializeField] GameObject flamethrower;
+    [SerializeField] ParticleSystem flamethrower;
     [SerializeField] GameObject FTBurn;
     [SerializeField] Transform preMovement;
 
@@ -55,14 +51,14 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     public GameObject whatHit;
 
     Vector3 playerVel;
-    Vector3 moveDir;
+    public Vector3 moveDir;
 
     float HeatPlayer;
     // Start is called before the first frame update
     void Start()
     {
         hasKey = false;
-        flamethrower.SetActive(false);
+        //flamethrower.SetActive(false);
         HPOrig = playerHP;
         HeatPlayer = playerHeat;
         updatePlayerUI();
@@ -108,7 +104,8 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
         if (Input.GetButtonDown("Fire2") && HeatPlayer > 0f)
         {
             aud.PlayOneShot(audFlame[Random.Range(0, audFlame.Length)], flameVol);
-            flamethrower.SetActive(true);
+            flamethrower.Play();
+            //flamethrower.SetActive(true);
             isFlameThrower = true;
         }
         //Raycasting for the flamethrower.
@@ -117,7 +114,8 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
             StartCoroutine(shootFlameThrower());
             if (HeatPlayer <= 0)
             {
-                flamethrower.SetActive(false);
+                flamethrower.Stop();
+                //flamethrower.SetActive(false);
             }
         }
         //Turns the flamethrower animation off when player released Rclick.
@@ -125,7 +123,8 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
         {
             aud.Stop();
             isFlameThrower = false;
-            flamethrower.SetActive(false);
+            flamethrower.Stop();
+            //flamethrower.SetActive(false);
         }
     }
 
@@ -149,12 +148,7 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
         
 
         
-    }
-
-
-
-
-  
+    } 
     
     //Creates and launches a fireball from shootPos. Not automatic, so player needs to click Lclick each time they want to shoot.
     IEnumerator shootFireball()
