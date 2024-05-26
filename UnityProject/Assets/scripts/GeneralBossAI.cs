@@ -19,6 +19,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     [SerializeField] float attackCooldown;
     [SerializeField] float boostedAttackCooldown;
     [SerializeField] private float minDistanceBetweenDestinations = 1.0f;
+    private string[] troll_attacks;
 
 
     [Header("--------Shooting STATS--------")]
@@ -89,6 +90,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         currentAttackCooldown = attackCooldown;
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
+        troll_attacks = new string[] {"attack", "attack2"}; 
         BossHPupdate();
 
         Debug.Log("Max Health: " + maxHealth + "HP: " + hp);
@@ -172,7 +174,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
                 {
                     if (Physics.Raycast(shootPos.position, transform.forward, out hit, meleeDist))
                     {
-                        anim.SetTrigger("attack");
+                        anim.SetTrigger(troll_attacks[Random.Range(0, troll_attacks.Length)]);
                         currentAttackCooldown = stage1Complete ? boostedAttackCooldown : attackCooldown;
                     }
                     if (Stage3 == true)
@@ -255,7 +257,6 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         }
         if (hp <= 0)
         {
-            anim.SetTrigger("Death");
             BossDies();
             Instantiate(loot, dropPos.position, transform.rotation);
         }
@@ -279,10 +280,11 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     }
     public void BossDies()
     {
-        anim.SetTrigger("Death");
-        Destroy(gameObject);
+        agent.isStopped = true;
+        anim.ResetTrigger("attack");
+        anim.SetTrigger("Dead");
+        Destroy(gameObject, 3f);
         gameManager.instance.givePlayerXP(30);
-       
     }
     //Function being called by animation.
     public void Attack()
