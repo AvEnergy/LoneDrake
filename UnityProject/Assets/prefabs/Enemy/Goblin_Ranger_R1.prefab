@@ -246,15 +246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77.03061
+      value: -25.132479
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.77
+      value: 7.5572186
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 57.409985
+      value: -50.46413
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -368,6 +368,8 @@ MonoBehaviour:
   arrow: {fileID: 883272526524176970, guid: 544e0258bba8e5f43a65d137e5a38f36, type: 3}
   shootPos: {fileID: 4395500467204917601}
   headPos: {fileID: 9051058637641663386}
+  dropPos: {fileID: 9051058637641663364}
+  loot: {fileID: 3911078371028827749, guid: 410e47d8da8d2214495d88af1c34bb84, type: 3}
   aud: {fileID: 3214390882237692321}
   audWalk: {fileID: 8300000, guid: 356f6c4dbe3d99a4d895cb18359a3f91, type: 3}
   walkVol: 0.8
@@ -533,6 +535,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &9051058637641663364 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400030, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
+  m_PrefabInstance: {fileID: 9051058637641537818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9051058637641663374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400020, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}

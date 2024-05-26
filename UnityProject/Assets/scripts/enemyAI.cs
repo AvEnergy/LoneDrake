@@ -48,6 +48,7 @@ public class enemyAI : MonoBehaviour, iDamage
 
     [Header("-----Animations----")]
     private string[] animList;
+    private string[] animList_Goblin;
 
 
 
@@ -69,7 +70,8 @@ public class enemyAI : MonoBehaviour, iDamage
        startingPos = transform.position;
        myColor = model.material.color;
        animList = new string[] { "death", "death2", "death3" };
-      
+       animList_Goblin = new string[] { "death", "death2", "death3" , "death4"};
+
     }
 
     // Update is called once per frame
@@ -188,14 +190,10 @@ public class enemyAI : MonoBehaviour, iDamage
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
-            int count = 0;
             gameManager.instance.questItems.Add(this.tag);
             PlayDeath();
-            gameManager.instance.givePlayerXP(30);
-            if (count == 0)
-            {
-                Instantiate(loot, dropPos.position, transform.rotation);            
-            }
+            gameManager.instance.givePlayerXP(30);       
+            Instantiate(loot, dropPos.position, transform.rotation);            
         }
     }
 
@@ -204,7 +202,14 @@ public class enemyAI : MonoBehaviour, iDamage
     {
         anim.ResetTrigger("attack");
         agent.isStopped = true;
-        anim.SetTrigger(animList[Random.Range(0, animList.Length)]);
+        if (gameObject.name.Contains("Goblin")) 
+        {
+            anim.SetTrigger(animList_Goblin[Random.Range(0, animList_Goblin.Length)]);
+        }
+        else
+        {
+            anim.SetTrigger(animList[Random.Range(0, animList.Length)]);
+        }
         Destroy(gameObject, 3.45f);
     }
 
