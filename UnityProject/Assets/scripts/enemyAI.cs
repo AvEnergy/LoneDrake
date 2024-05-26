@@ -46,6 +46,11 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] float walkVol;
 
 
+    [Header("-----Animations----")]
+    private string[] animList;
+
+
+
     Color myColor;
 
     bool isShooting;
@@ -63,6 +68,8 @@ public class enemyAI : MonoBehaviour, iDamage
        stoppingDistOrig = agent.stoppingDistance;
        startingPos = transform.position;
        myColor = model.material.color;
+       animList = new string[] { "death", "death2", "death3" };
+      
     }
 
     // Update is called once per frame
@@ -181,11 +188,24 @@ public class enemyAI : MonoBehaviour, iDamage
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
+            int count = 0;
             gameManager.instance.questItems.Add(this.tag);
-            Destroy(gameObject);
+            PlayDeath();
             gameManager.instance.givePlayerXP(30);
-            Instantiate(loot, dropPos.position, transform.rotation);
+            if (count == 0)
+            {
+                Instantiate(loot, dropPos.position, transform.rotation);            
+            }
         }
+    }
+
+
+    public void PlayDeath()
+    {
+        anim.ResetTrigger("attack");
+        agent.isStopped = true;
+        anim.SetTrigger(animList[Random.Range(0, animList.Length)]);
+        Destroy(gameObject, 3.45f);
     }
 
     IEnumerator flashRed()

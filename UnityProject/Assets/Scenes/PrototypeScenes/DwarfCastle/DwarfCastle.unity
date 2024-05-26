@@ -430,6 +430,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57ef16ee7712da6409e8836bf6001e3c, type: 3}
+--- !u!1 &75011578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5873139700392924267, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
+  m_PrefabInstance: {fileID: 1752391955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &90432728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -680,6 +685,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeVariant1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1934212114096619192, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -908,7 +917,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 549740557}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2049686015645748218, guid: fef5421e3e81c954aa92ce17b770e391, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fef5421e3e81c954aa92ce17b770e391, type: 3}
@@ -1455,6 +1465,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a95d24ca5dca722419f231550a6c2a9e, type: 3}
+--- !u!114 &367849994 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7029846450291199482, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
+  m_PrefabInstance: {fileID: 1752391955}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &386873178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3223,17 +3244,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b0315988d4640f4f8028117c16b74e1, type: 3}
---- !u!114 &716556360 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8259873633548303197, guid: fef5421e3e81c954aa92ce17b770e391, type: 3}
-  m_PrefabInstance: {fileID: 254184379}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &781784519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3860,6 +3870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeVariant1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1934212114096619192, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3934,11 +3948,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81729cd5e6b828e41bdb606e49a08303, type: 3}
---- !u!1 &882812190 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 215964033923697484, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
-  m_PrefabInstance: {fileID: 983382951}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &918853241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7748,6 +7757,10 @@ PrefabInstance:
       propertyPath: playerHP
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7282396975303278723, guid: 57ece84e87c84c64d9f86eeda97f81b8, type: 3}
+      propertyPath: flamethrower
+      value: 
+      objectReference: {fileID: 3356623501747379534, guid: a6e38e28793711247b273f70ff0b3a57, type: 3}
     - target: {fileID: 8626084559451263684, guid: 57ece84e87c84c64d9f86eeda97f81b8, type: 3}
       propertyPath: m_Name
       value: Player Variant
@@ -8001,12 +8014,12 @@ MonoBehaviour:
   shootPos: {fileID: 0}
   headPos: {fileID: 38273729}
   dropPos: {fileID: 1596671984}
-  MINIBOSS_HP_DISPLAY: {fileID: 882812190}
+  MINIBOSS_HP_DISPLAY: {fileID: 75011578}
   loot: {fileID: 1725122444}
   aud: {fileID: 0}
   audWalk: {fileID: 0}
   walkVol: 0.1
-  miniBossHpBar: {fileID: 716556360}
+  miniBossHpBar: {fileID: 367849994}
 --- !u!195 &1752391958 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 7620679764198677787, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
@@ -8844,6 +8857,10 @@ PrefabInstance:
     - target: {fileID: 1934212114096619192, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
       propertyPath: m_Name
       value: MeleeVariant1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934212114096619192, guid: 84d360162d1772f4e9fab68ca01e68e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
