@@ -25971,6 +25971,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7282396975303278723, guid: 57ece84e87c84c64d9f86eeda97f81b8, type: 3}
+      propertyPath: flamethrower
+      value: 
+      objectReference: {fileID: 3356623501747379534, guid: a6e38e28793711247b273f70ff0b3a57, type: 3}
     - target: {fileID: 8089999244475130365, guid: 57ece84e87c84c64d9f86eeda97f81b8, type: 3}
       propertyPath: m_Enabled
       value: 0

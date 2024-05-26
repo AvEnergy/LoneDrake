@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 90
-  aud: {fileID: 8473644962084556866}
-  healSound: {fileID: 8300000, guid: d447bf6e0a4f22c49846bfb5c0d44e2d, type: 3}
+  audSpawn: {fileID: 2817613126695338676, guid: 430e6e6501777fe4b91f61b5c8e81b37, type: 3}
+  spawnLocation: {fileID: 2330900961939116111}
 --- !u!82 &8473644962084556866
 AudioSource:
   m_ObjectHideFlags: 0

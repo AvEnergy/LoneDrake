@@ -5,8 +5,8 @@ using UnityEngine;
 public class HealthPickUp : MonoBehaviour
 {
     [SerializeField]int rotSpeed;
-    [SerializeField] AudioSource aud;
-    [SerializeField] AudioClip healSound;
+    [SerializeField] GameObject audSpawn;
+    [SerializeField] Transform spawnLocation;
 
     void Update()
     {
@@ -23,11 +23,8 @@ public class HealthPickUp : MonoBehaviour
     public void Pickup()
     {
         int amount = Random.Range(25, 60);
-        if (healSound != null)
-        {
-            aud.PlayOneShot(healSound);
-        }
         gameManager.instance.playerScript.GetHP(amount);
+        Instantiate(audSpawn, spawnLocation.position, transform.rotation);
         Destroy(gameObject);
     }
 }
