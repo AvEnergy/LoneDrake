@@ -51,6 +51,9 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     public bool hasKey;
     bool isShooting;
     bool isInvincible;
+    bool activateJump;
+    bool activateAoE;
+    bool activateFlame;
     public bool isFlameThrower;
     bool skillTreeOpwn;
     
@@ -114,7 +117,7 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
             StartCoroutine(shootFireball());
         }
         //Turns the flamethrower animation on when player clicks Rclick.
-        if (Input.GetButtonDown("Fire2") && HeatPlayer > 0f && GetInvincible())
+        if (Input.GetButtonDown("Fire2") && HeatPlayer > 0f && activateFlame)
         {
             aud.PlayOneShot(audFlame[Random.Range(0, audFlame.Length)], flameVol);
             flamethrower.Play();
@@ -122,7 +125,7 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
             isFlameThrower = true;
         }
         //Raycasting for the flamethrower.
-        if (Input.GetButton("Fire2") && !isShooting && HeatPlayer > 0f && GetInvincible())
+        if (Input.GetButton("Fire2") && !isShooting && HeatPlayer > 0f && activateFlame)
         {
             StartCoroutine(shootFlameThrower());
             if (HeatPlayer <= 0)
@@ -148,13 +151,13 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
         
         controller.Move(moveDir * speed * Time.deltaTime);
         
-        if (Input.GetButtonDown("Jump") && GetInvincible() && jumpedTimes < maxJumps)
+        if (Input.GetButtonDown("Jump") && activateJump && jumpedTimes < maxJumps)
         {
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], jumpVol);
             jumpedTimes++;
             playerVel.y = jumpSpeed;
         }
-        if(Input.GetKeyDown(KeyCode.E) && GetInvincible())
+        if(Input.GetKeyDown(KeyCode.E) && activateAoE)
         {
             aoeAttack(center_of_player, radius);
         }
@@ -233,6 +236,18 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     {
         isInvincible = value;
     }
+    public void SetDoubleJump(bool value)
+    {
+        activateJump = value;
+    }
+    public void SetAoE(bool value)
+    {
+        activateAoE = value;
+    }
+    public void SetFlame(bool value)
+    {
+        activateFlame = value;
+    }
 
     public IEnumerator invincible()
     {
@@ -240,9 +255,19 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
         yield return new WaitForSeconds(5);
         SetInvicible(false);
     }
+    public IEnumerator AOE()
+    {
+        SetAoE(true);
+        yield return new WaitForSeconds(5);
+        SetAoE(false);
+    }
     public void ActivateIMMORTAL()
     {
         StartCoroutine(invincible());
+    }
+    public void ActivateAOE()
+    {
+        StartCoroutine(AOE());
     }
     public void updatePlayerUI()
     {

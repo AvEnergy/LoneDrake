@@ -9,7 +9,10 @@ public class SetSkills : MonoBehaviour
 {
     public GameObject player;
     public playerController playerscript;
-    
+    bool unlocked;
+    bool unlcoked_Invincible;
+    bool unlocked_flame;
+    bool unlocked_AOE;
 
     //Enum created as a way to determine a current state or level
     public enum LevelRequired 
@@ -62,34 +65,48 @@ public class SetSkills : MonoBehaviour
             //If all checks are true then we decrement the skillpoint and get change the color to green of the button by Calling GetCompenent of Image.
             case "Invincibility":
                 
-                if(gameManager.instance.skillPoint >= 0 && gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.one])
+                if(gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.one])
                 {
-                    gameManager.instance.skillPoint--;
-                    GetComponent<Image>().color = Color.green;
-                    SkillManager.instance.skillsUnlocked.Add(gameObject.name);
+                    if(gameManager.instance.skillPoint >= 0 && !unlcoked_Invincible)
+                    {
+                        gameManager.instance.skillPoint--;
+                        GetComponent<Image>().color = Color.green;
+                        SkillManager.instance.skillsUnlocked.Add(gameObject.name);
+                        unlcoked_Invincible = true;
+                    }
                     playerscript.ActivateIMMORTAL();
-
                 }
+                
                 break;
 
             case "DoubleJump":
-                if(gameManager.instance.skillPoint >= 2 && gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.two])
+                if(gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.two])
                 {
-                    gameManager.instance.skillPoint -= 2;
-                    GetComponent<Image>().color = Color.green;
-                    SkillManager.instance.skillsUnlocked.Add(gameObject.name);
-                    playerscript.SetInvicible(true);
+                    if(gameManager.instance.skillPoint >= 2 && !unlocked)
+                    {
+                        gameManager.instance.skillPoint -= 2;
+                        GetComponent<Image>().color = Color.green;
+                        SkillManager.instance.skillsUnlocked.Add(gameObject.name);
+                        unlocked = true;
+                    }
+                    playerscript.SetDoubleJump(true);
                 }
+                
                 break;
 
             case "AoE":
-                if (gameManager.instance.skillPoint >= 2 && gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.three])
+                if (gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.three])
                 {
-                    gameManager.instance.skillPoint -= 2;
-                    GetComponent<Image>().color = Color.green;
-                    SkillManager.instance.skillsUnlocked.Add(gameObject.name);
-                    playerscript.ActivateIMMORTAL();
+                    if(gameManager.instance.skillPoint >= 2 && !unlocked_AOE)
+                    {
+                        gameManager.instance.skillPoint -= 2;
+                        GetComponent<Image>().color = Color.green;
+                        SkillManager.instance.skillsUnlocked.Add(gameObject.name);
+                        unlocked_AOE = true;    
+                    }
+                    playerscript.ActivateAOE();
                 }
+               
                 break;
 
             case "Dash":
@@ -100,15 +117,19 @@ public class SetSkills : MonoBehaviour
                 }
                 break;
             case "Flame":
-                if (gameManager.instance.skillPoint >= 3 && gameManager.instance.currLvl>= SkillManager.instance.level_To_Unlock[(int)LevelRequired.five])
+                if (gameManager.instance.currLvl>= SkillManager.instance.level_To_Unlock[(int)LevelRequired.five])
                 {
-                    gameManager.instance.skillPoint -= 3;
-                    GetComponent<Image>().color = Color.green;
-                    SkillManager.instance.skillsUnlocked.Add(gameObject.name);
-                    gameManager.instance.fireBar.gameObject.SetActive(true);
-                    playerscript.SetInvicible(true);
-                   
+                    if(gameManager.instance.skillPoint >= 3 && !unlocked_flame)
+                    {
+                        gameManager.instance.skillPoint -= 3;
+                        GetComponent<Image>().color = Color.green;
+                        SkillManager.instance.skillsUnlocked.Add(gameObject.name);
+                        gameManager.instance.fireBar.gameObject.SetActive(true);
+                        unlocked_flame = true;
+                    }
+                    playerscript.SetFlame(true);
                 }
+                
                 break;
             case "Glide":
                 if (gameManager.instance.skillPoint >= 3 && gameManager.instance.currLvl >= SkillManager.instance.level_To_Unlock[(int)LevelRequired.five])
