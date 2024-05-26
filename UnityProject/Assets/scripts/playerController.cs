@@ -114,7 +114,7 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
             StartCoroutine(shootFireball());
         }
         //Turns the flamethrower animation on when player clicks Rclick.
-        if (Input.GetButtonDown("Fire2") && HeatPlayer > 0f)
+        if (Input.GetButtonDown("Fire2") && HeatPlayer > 0f && GetInvincible())
         {
             aud.PlayOneShot(audFlame[Random.Range(0, audFlame.Length)], flameVol);
             flamethrower.Play();
@@ -122,7 +122,7 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
             isFlameThrower = true;
         }
         //Raycasting for the flamethrower.
-        if (Input.GetButton("Fire2") && !isShooting && HeatPlayer > 0f)
+        if (Input.GetButton("Fire2") && !isShooting && HeatPlayer > 0f && GetInvincible())
         {
             StartCoroutine(shootFlameThrower());
             if (HeatPlayer <= 0)
@@ -148,13 +148,13 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
         
         controller.Move(moveDir * speed * Time.deltaTime);
         
-        if (Input.GetButtonDown("Jump") && jumpedTimes < maxJumps)
+        if (Input.GetButtonDown("Jump") && GetInvincible() && jumpedTimes < maxJumps)
         {
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], jumpVol);
             jumpedTimes++;
             playerVel.y = jumpSpeed;
         }
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) && GetInvincible())
         {
             aoeAttack(center_of_player, radius);
         }

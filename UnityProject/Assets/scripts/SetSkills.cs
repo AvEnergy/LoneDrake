@@ -77,6 +77,8 @@ public class SetSkills : MonoBehaviour
                 {
                     gameManager.instance.skillPoint -= 2;
                     GetComponent<Image>().color = Color.green;
+                    SkillManager.instance.skillsUnlocked.Add(gameObject.name);
+                    playerscript.SetInvicible(true);
                 }
                 break;
 
@@ -85,6 +87,8 @@ public class SetSkills : MonoBehaviour
                 {
                     gameManager.instance.skillPoint -= 2;
                     GetComponent<Image>().color = Color.green;
+                    SkillManager.instance.skillsUnlocked.Add(gameObject.name);
+                    playerscript.ActivateIMMORTAL();
                 }
                 break;
 
@@ -100,6 +104,10 @@ public class SetSkills : MonoBehaviour
                 {
                     gameManager.instance.skillPoint -= 3;
                     GetComponent<Image>().color = Color.green;
+                    SkillManager.instance.skillsUnlocked.Add(gameObject.name);
+                    gameManager.instance.fireBar.gameObject.SetActive(true);
+                    playerscript.SetInvicible(true);
+                   
                 }
                 break;
             case "Glide":
