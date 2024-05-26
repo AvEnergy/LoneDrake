@@ -35,6 +35,7 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     [SerializeField] AudioClip[] audFlame;
     [SerializeField] AudioClip audGrounded;
     [SerializeField] AudioClip audFireball;
+    [SerializeField] AudioClip[] audHurt;
     [SerializeField] float jumpVol;
     [SerializeField] float flameVol;
     [SerializeField] float fireballVol;
@@ -204,16 +205,15 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
 
     public void takeDamage(int amount)
     {
-        
-        
-            playerHP -= amount;
-            updatePlayerUI();
-            StartCoroutine(playerWasHit());
-            if (playerHP <= 0)
-            {
-                gameManager.instance.youLoser();
-            }
-        
+        playerHP -= amount;
+        updatePlayerUI();
+        StartCoroutine(playerWasHit());
+        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)]);
+        if (playerHP <= 0)
+        {
+            gameManager.instance.youLoser();
+        }
+
     }
 
     public void IgnoreDamage(int amount)
@@ -344,12 +344,4 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
                 gameManager.instance.killedby.text = "Wizard FireBall";
         }
     }
-    //Trying to figure out how get the enemy to prefire at the location that player is moving towards.
-
-    //private void preAimTrans()
-    //{
-    //    playerVel = moveDir / Time.deltaTime;
-    //    playerAccel = playerVel / Time.deltaTime;
-    //    preMovement.position += playerAccel;
-    //}
 }
