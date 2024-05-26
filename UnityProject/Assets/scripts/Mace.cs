@@ -30,11 +30,11 @@ public class Mace : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             
-            iDamage dmg = other.GetComponent<iDamage>();
+            IgnoreDamage dmg = other.GetComponent<IgnoreDamage>();
 
             if (dmg != null && !canHit && count == 1)   //A bool to control when to apply damage since Trigger will apply continous damage if the player remains inside the collider.
             {
-                dmg.takeDamage(damage);
+                dmg.IgnoreDamage(damage);
                 StartCoroutine(cooldown());
             }
         }

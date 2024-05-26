@@ -21,16 +21,24 @@ public class FireBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger)
+        if (other.isTrigger || other.CompareTag("Player"))
         {
             return;
         }
-        iDamage dmg = other.GetComponent<iDamage>();
-        if (dmg != null && !hitHappened)
+        iDamage other_dmg = other.GetComponent<iDamage>();
+        if (other_dmg != null && !hitHappened && !other.CompareTag("Player"))
         {
-            dmg.takeDamage(damage);
+            other_dmg.takeDamage(damage);
             hitHappened = true;
         }
+        IgnoreDamage dmg = other.GetComponent<IgnoreDamage>();
+        if (dmg != null && !hitHappened)
+        {
+            dmg.IgnoreDamage(damage);
+            hitHappened = true;
+        }
+        
+        
         Destroy(gameObject);
     }
 }

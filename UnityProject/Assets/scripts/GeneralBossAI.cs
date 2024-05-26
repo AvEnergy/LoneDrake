@@ -28,6 +28,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
 
     [Header("-------Melee Stats------")]
     [SerializeField] bool CanMeleeAttack;
+    
     [SerializeField] int meleeDmg;
     [SerializeField] float meleeDist;
     [SerializeField] int roamDist;
@@ -82,6 +83,8 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     private float currentAttackCooldown;
     private bool stage1Complete = false;
     private bool stage2Complete = false;
+    bool isDead;
+    public bool isAttacking;
 
     // Start is called before the first frame update
     void Start()
@@ -176,7 +179,9 @@ public class GeneralBossAI : MonoBehaviour, iDamage
                 }
                 if (CanMeleeAttack && agent.remainingDistance <= meleeDist)
                 {
+                        isAttacking = true;
                         anim.SetTrigger(troll_attacks[Random.Range(0, troll_attacks.Length)]);
+                    isAttacking = false;
                        currentAttackCooldown = stage1Complete ? boostedAttackCooldown : attackCooldown;
                 }
                 if (Stage3 == true)
@@ -224,11 +229,15 @@ public class GeneralBossAI : MonoBehaviour, iDamage
 
     public void takeDamage(int amount)
     {
+
+        if (isDead)
+        {
+            return;
+        }
         hp -= amount;
         anim.SetTrigger("take_damage");
         BossHPupdate();
         agent.SetDestination(gameManager.instance.player.transform.position);
-        //StartCoroutine(flashRed());
         if (Stage2 == true)
         {
             if (!stage1Complete && hp <= maxHealth * .5f)
@@ -258,6 +267,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         }
         if (hp <= 0)
         {
+            isDead = true;
             BossDies();
             Instantiate(loot, dropPos.position, transform.rotation);
         }

@@ -54,6 +54,7 @@ public class enemyAI : MonoBehaviour, iDamage
 
     Color myColor;
 
+    bool isDead;
     bool isShooting;
     bool playerinRange;
     bool destinationChosen;
@@ -180,20 +181,29 @@ public class enemyAI : MonoBehaviour, iDamage
     void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(playerDir);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * facetargetSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, facetargetSpeed * Time.deltaTime);
     }
 
     public void takeDamage(int amount)
     {
+        if (isDead)
+        {
+            return;
+        }
         hp -= amount;
         agent.SetDestination(gameManager.instance.player.transform.position);
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
+            isDead = true;
             gameManager.instance.questItems.Add(this.tag);
             PlayDeath();
-            gameManager.instance.givePlayerXP(30);       
-            Instantiate(loot, dropPos.position, transform.rotation);            
+            gameManager.instance.givePlayerXP(30);
+
+            if (Random.value >= 0.5f)
+            {
+                Instantiate(loot, dropPos.position, transform.rotation);
+            }
         }
     }
 

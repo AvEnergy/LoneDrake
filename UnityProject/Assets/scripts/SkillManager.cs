@@ -14,24 +14,23 @@ public class SkillManager : MonoBehaviour
 
 
     [Header("-----SkillTree UI------")]
-    [SerializeField] public GameObject skillMenuActive;
-    [SerializeField] GameObject skillMenu;
+    [SerializeField] public GameObject skillMenuActive; //Active menu to display.
+    [SerializeField] GameObject skillMenu;             //Menu that will be displayed.
 
 
     [Header("--------Skill Tree Elements-------")]
 
 
-    [SerializeField] GameObject skilltree;
-    public List<int> level_To_Unlock;
-    public List<string> skillsUnlocked;
-    public List<int> time_Duration;
-    public List<SetSkills> skills;
-    
-    public int skillpoints;
-    public int playerlvl;
+    [SerializeField] GameObject skilltree;    //variable that is the parent of the objects in GetCompenentsInChildren.
+    public List<int> level_To_Unlock;        //Simple List that is intialized to create levels.
+    public List<string> skillsUnlocked;     //SetSkills will use this store the name's of the objects related to the skill that is being unlocked.
+    public List<SetSkills> skills;         //Used to store objects that have "SetSkills" script.
+
+    [Header("----------------------------------")]
 
     
     public bool displayOn;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -49,6 +48,8 @@ public class SkillManager : MonoBehaviour
         //Finds any objects that are childs of skilltree variable 
         //containing the script "SetSkills" and adds them to a list called Skills.
         //This should add only the buttons of the skill tree menu since they're the only ones that a SetSkills script attached.
+
+
         foreach(var skill in skilltree.GetComponentsInChildren<SetSkills>()) 
         {
             if (skill != null)
@@ -73,6 +74,10 @@ public class SkillManager : MonoBehaviour
             {
                 SkillMenuOn();
             }
+        }
+        if(Input.GetButtonDown("Cancel") && gameManager.instance.menuActive == null)
+        {
+            SkillMenuOff();
         }
     }
 
