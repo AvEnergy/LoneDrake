@@ -100,6 +100,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(headPos.position, headPos.forward * 10, Color.yellow);
         float animSpeed = agent.velocity.normalized.magnitude;
         float moveSpeedValue = stage1Complete ? boostedMoveSpeed : speed;
         agent.speed = moveSpeedValue;
@@ -121,6 +122,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         {
             StartCoroutine(playfootSteps());
         }
+        
        
     }
     IEnumerator roam()
@@ -131,7 +133,8 @@ public class GeneralBossAI : MonoBehaviour, iDamage
             agent.stoppingDistance = 0;
             yield return new WaitForSeconds(pauseTimer);
 
-            Vector3 randomPos = startingPos + Random.insideUnitSphere * roamDist;
+            Vector3 randomPos = Random.insideUnitSphere * roamDist;
+            randomPos += startingPos;
             NavMeshHit hit;
 
             if (NavMesh.SamplePosition(randomPos, out hit, roamDist, NavMesh.AllAreas))
@@ -162,6 +165,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
             Debug.Log(hit.transform.name);
             if (hit.collider.CompareTag("Player") && angleToPlayer <= viewCone)
             {
+                CanMeleeAttack = true;
                 agent.stoppingDistance = stoppingDistOrig;
                 agent.SetDestination(gameManager.instance.player.transform.position);
 
@@ -170,17 +174,14 @@ public class GeneralBossAI : MonoBehaviour, iDamage
                     anim.SetTrigger("shoot");
                     currentAttackCooldown = stage1Complete ? boostedAttackCooldown : attackCooldown;
                 }
-                if (CanMeleeAttack && currentAttackCooldown <= 0)
+                if (CanMeleeAttack && agent.remainingDistance <= meleeDist)
                 {
-                    if (Physics.Raycast(shootPos.position, transform.forward, out hit, meleeDist))
-                    {
                         anim.SetTrigger(troll_attacks[Random.Range(0, troll_attacks.Length)]);
-                        currentAttackCooldown = stage1Complete ? boostedAttackCooldown : attackCooldown;
-                    }
-                    if (Stage3 == true)
-                    {
-                        anim.SetTrigger("attack2");
-                    }
+                       currentAttackCooldown = stage1Complete ? boostedAttackCooldown : attackCooldown;
+                }
+                if (Stage3 == true)
+                {
+                    anim.SetTrigger("attack2");
                 }
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
@@ -290,7 +291,7 @@ public class GeneralBossAI : MonoBehaviour, iDamage
     public void Attack()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward, Color.red);
+        //Debug.DrawRay(transform.position, transform.forward, Color.red);
         if (Physics.Raycast(shootPos.position, transform.forward, out hit, meleeDist))
         {
             if (hit.collider.CompareTag("Player"))

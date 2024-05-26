@@ -4017,6 +4017,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a2122d91e1c4744291a81ffbda06a00, type: 3}
+--- !u!1 &920295577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920295578}
+  m_Layer: 0
+  m_Name: eye_pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920295578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920295577}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 38273729}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &940740988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7944,13 +7975,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7502630388566925153, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
+      propertyPath: m_Radius
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 7620679764198677787, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
       propertyPath: m_BaseOffset
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7620679764198677787, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620679764198677787, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
       propertyPath: m_StoppingDistance
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7888060609031539490, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
       propertyPath: meleeDist
@@ -7964,6 +8003,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1800823076875795515, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
       insertIndex: 0
       addedObject: {fileID: 960624837}
+    - targetCorrespondingSourceObject: {fileID: 2127540304799272104, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 920295578}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1379220193556759709, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
       insertIndex: 1
@@ -7991,28 +8033,28 @@ MonoBehaviour:
   facetargetSpeed: 10
   iKnowWherePlayerIs: 0
   boostedMoveSpeed: 5
-  attackCooldown: 0.25
+  attackCooldown: 0.5
   boostedAttackCooldown: 3
   minDistanceBetweenDestinations: 1
   CanShootAttack: 0
   shootRate: 0
-  CanMeleeAttack: 1
+  CanMeleeAttack: 0
   meleeDmg: 10
-  meleeDist: 6
-  roamDist: 0
-  pauseTimer: 0
-  viewCone: 50
+  meleeDist: 3
+  roamDist: 25
+  pauseTimer: 2
+  viewCone: 70
   animSpeedTrans: 4
   boostedAnimSpeedTrans: 6
-  Stage2: 1
-  Stage3: 1
+  Stage2: 0
+  Stage3: 0
   agent: {fileID: 1752391958}
   playertemp: {fileID: 430805115}
   model: {fileID: 13700008, guid: 34bf333920b9886469ea633c17e22d4d, type: 3}
   anim: {fileID: 1752391961}
   arrow: {fileID: 0}
-  shootPos: {fileID: 0}
-  headPos: {fileID: 38273729}
+  shootPos: {fileID: 920295578}
+  headPos: {fileID: 920295578}
   dropPos: {fileID: 1596671984}
   MINIBOSS_HP_DISPLAY: {fileID: 75011578}
   loot: {fileID: 1725122444}
