@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SetSkills : MonoBehaviour
 {
     public GameObject player;
     public playerController playerscript;
-
-
+    
 
     //Enum created as a way to determine a current state or level
     public enum LevelRequired 
@@ -26,16 +26,11 @@ public class SetSkills : MonoBehaviour
         playerscript = player.GetComponent<playerController>();
     }
     //Debug to check for the name of the gameObject when OnClick is called for the function below this.
-    public void GetName()
-    {
-        Debug.Log(gameObject.name);
-    }
 
     //Main function to be called when OnClick() is called. 
     public void unLockSkill()
     {
-        GetName();
-
+        
         //Iterates throught each element in the skills list.
         foreach (var skill in SkillManager.instance.skills)
         {
@@ -49,7 +44,11 @@ public class SetSkills : MonoBehaviour
 
         
     }
+    public bool highLighted_cursor()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
 
+    }
 
     //Function to preform certains skills when the button is clicked (Trying to work this with Key Inputs)
     public void DefineSkill(string name)
@@ -67,6 +66,7 @@ public class SetSkills : MonoBehaviour
                 {
                     gameManager.instance.skillPoint--;
                     GetComponent<Image>().color = Color.green;
+                    SkillManager.instance.skillsUnlocked.Add(gameObject.name);
                     playerscript.ActivateIMMORTAL();
 
                 }

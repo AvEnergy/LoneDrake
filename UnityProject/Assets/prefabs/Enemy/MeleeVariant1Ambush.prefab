@@ -833,6 +833,11 @@ MonoBehaviour:
   arrow: {fileID: 0}
   shootPos: {fileID: 3085218975670092161}
   headPos: {fileID: 1984780105296993405}
+  dropPos: {fileID: 3085218975670092161}
+  loot: {fileID: 3911078371028827749, guid: 410e47d8da8d2214495d88af1c34bb84, type: 3}
+  aud: {fileID: 0}
+  audWalk: {fileID: 0}
+  walkVol: 0
 --- !u!95 &3085077548759254644
 Animator:
   serializedVersion: 5

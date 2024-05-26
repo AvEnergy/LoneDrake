@@ -74,10 +74,9 @@ public class SkillManager : MonoBehaviour
                 SkillMenuOn();
             }
         }
-
     }
 
-
+  
 
     //Function that opens the skill Menu
     public void SkillMenuOn()

@@ -131,13 +131,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 915610804936650866, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
+      propertyPath: skill_icons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 915610804936650866, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
+      propertyPath: skill_icons.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 50017f310e8e7de46b8b35dd0bc8c089, type: 3}
+    - target: {fileID: 915610804936650866, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
+      propertyPath: skill_icons.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9247c73c879e4fd419de573230bbfe3a, type: 3}
     - target: {fileID: 5026724311698535935, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
       propertyPath: m_Name
       value: PlayerSkillTreeUI 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5026724311698535935, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
+    - target: {fileID: 5838096651945625343, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6403202918462034266, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
       propertyPath: m_Pivot.x
