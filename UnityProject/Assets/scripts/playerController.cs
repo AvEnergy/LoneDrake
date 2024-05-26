@@ -33,10 +33,12 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] audJump;
     [SerializeField] AudioClip[] audFlame;
+    [SerializeField] AudioClip audGrounded;
     [SerializeField] AudioClip audFireball;
     [SerializeField] float jumpVol;
     [SerializeField] float flameVol;
     [SerializeField] float fireballVol;
+    [SerializeField] public AudioSource pickUpListener;
 
     bool playingSteps;
     public bool hasKey;
@@ -70,6 +72,10 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     {
         if (controller.isGrounded)
         {
+            if (jumpedTimes > 0)
+            {
+                aud.PlayOneShot(audGrounded);
+            }
             jumpedTimes = 0;
             playerVel = Vector3.zero;
         }
