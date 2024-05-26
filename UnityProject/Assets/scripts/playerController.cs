@@ -40,6 +40,13 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     [SerializeField] float fireballVol;
     [SerializeField] public AudioSource pickUpListener;
 
+
+    [Header("-----AOE ATTACK-----")]
+    [SerializeField] float radius;
+    [SerializeField] Transform center_of_player;
+    [SerializeField] int AOE_DAMAGE;
+    [SerializeField] GameObject AOE_effect;
+
     bool playingSteps;
     public bool hasKey;
     bool isShooting;
@@ -146,6 +153,10 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], jumpVol);
             jumpedTimes++;
             playerVel.y = jumpSpeed;
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            aoeAttack(center_of_player, radius);
         }
 
         playerVel.y -= gravity * Time.deltaTime;
@@ -277,6 +288,21 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
         updatePlayerUI();
     }
 
+
+    public void aoeAttack(Transform player_center_position, float measurement)
+    {
+        Collider[] hitcollliders = Physics.OverlapSphere(player_center_position.position, measurement);
+
+        foreach(var hitCollider in hitcollliders)
+        {
+            iDamage dmg = hitCollider.GetComponent<iDamage>();
+            Instantiate(AOE_effect, hitCollider.transform.position, hitCollider.transform.rotation);
+            if(dmg != null && !hitCollider.CompareTag("Player"))
+            {
+                dmg.takeDamage(AOE_DAMAGE);
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         Arrow arrow = other.GetComponent<Arrow>();
