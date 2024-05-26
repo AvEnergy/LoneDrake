@@ -58,6 +58,7 @@ public class EnemyWizard : MonoBehaviour, iDamage
         phase = 2;
         chargeCounter = 0;
         origColor = model.material.color;
+        HP_BOSS_UPDATE();
     }
 
     // Update is called once per frame
@@ -140,6 +141,7 @@ public class EnemyWizard : MonoBehaviour, iDamage
     {
         gameManager.instance.bossHp.enabled = true;
         hp -= amount;
+        HP_BOSS_UPDATE();
         StartCoroutine(changeColor());
 
         if (!damageAnimCD)
@@ -165,9 +167,13 @@ public class EnemyWizard : MonoBehaviour, iDamage
             anim.SetTrigger("dead");
             StartCoroutine(winTheGame());
         }
-        gameManager.instance.bossHp.fillAmount = (float)hp / hpOrig;
+        
     }
 
+    public void HP_BOSS_UPDATE()
+    {
+        gameManager.instance.bossHp.fillAmount = (float)hp / hpOrig;
+    }
     IEnumerator changeColor()
     {
         model.material.color = Color.red;
