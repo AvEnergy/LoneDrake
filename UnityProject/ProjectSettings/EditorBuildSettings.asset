@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PrototypeScenes/GroupUnityProjectTestForestLevel/VolcanoLevel/VolcanoLevel.unity
     guid: d9bc7335c2356ad4ba77f3d9c08c230f
   - enabled: 1
+    path: Assets/Scenes/PrototypeScenes/GroupUnityProjectTestForestLevel/ForestLevel.unity
+    guid: 8a5bfc6fca96da24983f09272adc2623
+  - enabled: 0
     path: Assets/Scenes/PrototypeScenes/GroupUnityProjectTestForestLevel/ForestLevel2.0.unity
     guid: 6970f395bd01b5e4dae2027c888f1443
   - enabled: 1
