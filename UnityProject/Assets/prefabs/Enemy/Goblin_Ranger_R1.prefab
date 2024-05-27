@@ -246,15 +246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.132479
+      value: -16.51099
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.5572186
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -50.46413
+      value: 8.978368
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: ed1f8609fea7f9348b92206e3d12581e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -373,6 +373,10 @@ MonoBehaviour:
   aud: {fileID: 3214390882237692321}
   audWalk: {fileID: 8300000, guid: 356f6c4dbe3d99a4d895cb18359a3f91, type: 3}
   walkVol: 0.8
+  audHurt:
+  - {fileID: 8300000, guid: d4b9400ed7542ad459bfedafb714db8d, type: 3}
+  - {fileID: 8300000, guid: b4c6ffef8f227ff4b894701f623b4ade, type: 3}
+  - {fileID: 8300000, guid: dbb6698083f1f7a4a9414a30fe3686da, type: 3}
 --- !u!195 &3045522486494437000
 NavMeshAgent:
   m_ObjectHideFlags: 0

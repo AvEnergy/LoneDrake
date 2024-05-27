@@ -44,6 +44,7 @@ public class enemyAI : MonoBehaviour, iDamage
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip audWalk;
     [SerializeField] float walkVol;
+    [SerializeField] AudioClip[] audHurt;
 
 
     [Header("-----Animations----")]
@@ -192,6 +193,7 @@ public class enemyAI : MonoBehaviour, iDamage
         }
         hp -= amount;
         agent.SetDestination(gameManager.instance.player.transform.position);
+        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)]);
         StartCoroutine(flashRed());
         if (hp <= 0)
         {
