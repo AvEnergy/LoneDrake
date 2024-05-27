@@ -839,6 +839,10 @@ MonoBehaviour:
   aud: {fileID: 5913599503512852722}
   audWalk: {fileID: 8300000, guid: 356f6c4dbe3d99a4d895cb18359a3f91, type: 3}
   walkVol: 1.4
+  audHurt:
+  - {fileID: 8300000, guid: 7f4cb37ff47af2c4286d17e3635e1720, type: 3}
+  - {fileID: 8300000, guid: f36e3829c82a91f4fa1ed8b2d091e24a, type: 3}
+  - {fileID: 8300000, guid: 498baef7bdde27b4b8b348c3997e1ee0, type: 3}
 --- !u!95 &3085077548759254644
 Animator:
   serializedVersion: 5
