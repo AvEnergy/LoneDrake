@@ -167,8 +167,6 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
 
         controller.Move(playerVel * Time.deltaTime);
         
-
-        
     } 
     
     //Creates and launches a fireball from shootPos. Not automatic, so player needs to click Lclick each time they want to shoot.

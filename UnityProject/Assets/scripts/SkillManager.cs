@@ -41,6 +41,7 @@ public class SkillManager : MonoBehaviour
         }
         player = GameObject.FindWithTag("Player");
         playerscript = player.GetComponent<playerController>();
+        displayOn = false;
     }
 
     private void Start()
@@ -67,15 +68,17 @@ public class SkillManager : MonoBehaviour
     void Update()
     {
         //Pressing the M key will open the skill menu. 
-        if(Input.GetKeyUp(KeyCode.M))
+        if (Input.GetKeyUp(KeyCode.M))
         {
-            //Checks if SkillMenuActive doesn't have anything. Also Checks if the menuActive doesn't contain anything. Preventing menus from GameManger to open. 
-            if (skillMenuActive == null && gameManager.instance.menuActive == null)
-            {
-                SkillMenuOn();
-            }
+            displayOn = !displayOn;
         }
-        if(Input.GetButtonDown("Cancel") && gameManager.instance.menuActive == null)
+        //Checks if SkillMenuActive doesn't have anything. Also Checks if the menuActive doesn't contain anything. Preventing menus from GameManger to open. 
+        if (displayOn && gameManager.instance.menuActive == null)
+        {
+            SkillMenuOn();
+        }
+
+        if (!displayOn && gameManager.instance.menuActive == skillMenu)
         {
             SkillMenuOff();
         }
@@ -86,7 +89,6 @@ public class SkillManager : MonoBehaviour
     //Function that opens the skill Menu
     public void SkillMenuOn()
     {
-        displayOn = true;
         skillMenu.SetActive(displayOn);
         Cursor.visible = true;
 
@@ -100,17 +102,19 @@ public class SkillManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Confined;
         skillMenuActive = skillMenu;
+        gameManager.instance.menuActive = skillMenuActive;
+        gameManager.instance.statePaused();
     }
 
 
    //Turns of the Skill Menu
     public void SkillMenuOff()
     {
-        displayOn = false;
         skillMenu.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         skillMenuActive = null;
+        gameManager.instance.stateUnPaused();
     }
 
 

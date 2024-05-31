@@ -5455,31 +5455,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.02
+      value: -17.53
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.599609
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 44.56
+      value: -5.969
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9356532
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3529209
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5487,7 +5487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 41.332
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400102, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -5583,7 +5583,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 2ac65a4825555fe40b566ce53dbd2a27, type: 3}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: fireballVol
-      value: 1.1
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: preMovement
@@ -5606,6 +5606,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8626084559451361062}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: audHurt.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: audJump.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5613,6 +5617,26 @@ PrefabInstance:
       propertyPath: audFlame.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: audHurt.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 62d7df93131f55b4fb75923630677b28, type: 3}
+    - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: audHurt.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 034928d2c6d7d9240a23ea4bcc50515f, type: 3}
+    - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: audHurt.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1180e14149baeea4bb240a11d8943b42, type: 3}
+    - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: audHurt.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3ead44057745cdf41bbf792b3641165f, type: 3}
+    - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
+      propertyPath: audHurt.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c4000bcc945aad4bbdd307abf8f91c5, type: 3}
     - target: {fileID: 1343839892622693697, guid: ff3dd417bb566b849b752ce57810bbf5, type: 3}
       propertyPath: audJump.Array.data[0]
       value: 
