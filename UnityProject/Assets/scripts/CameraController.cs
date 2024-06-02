@@ -24,12 +24,10 @@ public class CameraController : MonoBehaviour
         if(Input.GetButton("Sprint") && !gameManager.instance.isPaused)
         {
             _camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, 70f, 5f * Time.deltaTime);
-            runningParticles.Play();
         }
         else
         {
             _camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, 50f, 5f * Time.deltaTime);
-            runningParticles.Stop();
         }
 
         //Get input
