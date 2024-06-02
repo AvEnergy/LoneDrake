@@ -8867,8 +8867,12 @@ PrefabInstance:
       value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 7620679764198677787, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
+      propertyPath: m_Speed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620679764198677787, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
       propertyPath: m_BaseOffset
-      value: 0.25
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7620679764198677787, guid: 6fd94e7c442b51a49a815d86bfa9f239, type: 3}
       propertyPath: m_AngularSpeed
@@ -8938,7 +8942,7 @@ MonoBehaviour:
   facetargetSpeed: 10
   iKnowWherePlayerIs: 0
   boostedMoveSpeed: 5
-  attackCooldown: 0.5
+  attackCooldown: -0.5
   boostedAttackCooldown: 3
   minDistanceBetweenDestinations: 1
   CanShootAttack: 0
@@ -8946,11 +8950,11 @@ MonoBehaviour:
   CanMeleeAttack: 0
   meleeDmg: 10
   meleeDist: 3
-  roamDist: 25
-  pauseTimer: 2
+  roamDist: 0
+  pauseTimer: 0
   viewCone: 70
-  animSpeedTrans: 4
-  boostedAnimSpeedTrans: 6
+  animSpeedTrans: 20
+  boostedAnimSpeedTrans: 20
   Stage2: 0
   Stage3: 0
   agent: {fileID: 1752391958}
