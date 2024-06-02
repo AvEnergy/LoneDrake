@@ -273,12 +273,12 @@ public class GeneralBossAI : MonoBehaviour, iDamage
         }
     }
 
-    /*IEnumerator flashRed()
+    IEnumerator flashRed()
     {
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = myColor;
-    }*/
+    }
 
     public void shootThem()
     {
