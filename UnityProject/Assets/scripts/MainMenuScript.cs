@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -12,13 +13,12 @@ public class MainMenuScript : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(quickToggleOptions());
+        //StartCoroutine(quickToggleOptions());
     }
     public void playGame()
     {
         StartCoroutine(delayStart());
     }
-
     IEnumerator delayStart()
     {
         mixer.volume = Mathf.Lerp(1f, 0.01f, 0.5f);
