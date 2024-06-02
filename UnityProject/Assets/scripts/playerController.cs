@@ -26,6 +26,7 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject fireball;
     [SerializeField] ParticleSystem flamethrower;
+    [SerializeField] ParticleSystem runningPart;
     [SerializeField] GameObject FTBurn;
     [SerializeField] Transform preMovement;
 
@@ -90,26 +91,12 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
             jumpedTimes = 0;
             playerVel = Vector3.zero;
         }
-       
-        if (SkillManager.instance.skillMenuActive == null)
-        {
-                Movement();
-            
-            skillTreeOpwn = false;
-        }
-        else
-        {
-            skillTreeOpwn = true;
-        }
-        
-        if (Input.GetButton("Sprint"))
-        {
-            speed = 12;
-        }
-        else
-        {
-            speed = 6;
-        }
+
+        Movement();
+
+
+
+
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDistance, Color.red);
         //Lets the player shoot the fireball when Lclick. If using the flamethrower, player will not be able to shoot.
         if (Input.GetButtonDown("Shoot") && !skillTreeOpwn && !isFlameThrower && !gameManager.instance.isPaused)
@@ -149,10 +136,22 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     {
         moveDir = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward);
 
-        
+        if (Input.GetButton("Sprint"))
+        {
+            speed = 12;
+            if(!runningPart.isPlaying)
+            runningPart.Play();
+        }
+        else
+        {
+            speed = 6;
+            if (runningPart.isPlaying)
+                runningPart.Stop();
+        }
+
         controller.Move(moveDir * speed * Time.deltaTime);
         
-        if (Input.GetButtonDown("Jump") && activateJump && jumpedTimes < maxJumps)
+        if (Input.GetButtonDown("Jump") && jumpedTimes < maxJumps)
         {
             aud.PlayOneShot(audJump[Random.Range(0, audJump.Length)], jumpVol);
             jumpedTimes++;
@@ -236,7 +235,10 @@ public class playerController : MonoBehaviour, iDamage, IgnoreDamage
     }
     public void SetDoubleJump(bool value)
     {
-        activateJump = value;
+        if (value)
+        {
+            maxJumps = 2;
+        }
     }
     public void SetAoE(bool value)
     {
