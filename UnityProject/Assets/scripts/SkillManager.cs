@@ -43,8 +43,6 @@ public class SkillManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerscript = player.GetComponent<playerController>();
         count = skillsUnlocked.Count;
-
-        count = PersistantData.skillUnlockedCount;
         displayOn = false;
     }
 

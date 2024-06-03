@@ -14,23 +14,19 @@ public class DisplayMessage : MonoBehaviour
     {
         
     }
-    private void Update()
-    {
-       
-    }
     public void OnGameObject()
     {
-        foreach (var skill_name in SkillManager.instance.skillsUnlocked)
+        foreach (var skill_name in SkillManager.instance.skills)
         {
-            if (SkillManager.instance.skillsUnlocked == null)
+            if (SkillManager.instance.skills == null)
             {
                 return;
             }
             else
             {
-                if (gameObject.name.Contains(skill_name))
+                if (gameObject.name.Contains(skill_name.name))
                 {
-                    switch(skill_name)
+                    switch(skill_name.name)
                     {
                         case "Invincibility":
                             text.text = "Player Takes No Damage for 5 seconds " +
@@ -59,15 +55,6 @@ public class DisplayMessage : MonoBehaviour
     }
 
   public void OnGameObjectExit()
-    {
-        DISPLAY_MESSAGE.SetActive(false);
-    }
-
-    public void skillsUnlocked()
-    {
-        DISPLAY_MESSAGE.SetActive(true);
-    }
-    public void skillUnlockedExit()
     {
         DISPLAY_MESSAGE.SetActive(false);
     }

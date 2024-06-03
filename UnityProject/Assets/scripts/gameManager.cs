@@ -25,6 +25,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPaused;
     [SerializeField] GameObject menuWinner;
     [SerializeField] GameObject menuLoser;
+    [SerializeField] GameObject menuOptions;
 
 
 
@@ -33,6 +34,7 @@ public class gameManager : MonoBehaviour
     public GameObject SkillTreeButtonSelected;
     public GameObject LoseButtonSelected;
     public GameObject WinButtonSelected;
+    public GameObject OptionsButtonSelected;
 
     public GameObject menuCheckPoint;
     public TMP_Text objText;
@@ -128,6 +130,30 @@ public class gameManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(PauseButtonSelected);
         menuActive.SetActive(isPaused);
 
+    }
+    public void Options()
+    {
+        if(menuActive != null)
+        {
+            menuActive.SetActive(false);
+            menuActive = null;
+        }
+        menuActive = menuOptions;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(OptionsButtonSelected);
+        menuActive.SetActive(isPaused);
+    }
+    public void SettingsExit()
+    {
+        if (menuActive != null)
+        {
+            menuActive.SetActive(false);
+            menuActive = null;
+        }
+        menuActive = menuPaused;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(PauseButtonSelected);
+        menuActive.SetActive(isPaused);
     }
     public void winner()
     {

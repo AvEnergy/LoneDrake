@@ -14,7 +14,7 @@ public class ToBeach : MonoBehaviour
             PersistantData.XpToKeep = gameManager.instance.XP;
             PersistantData.LevelToKeep = gameManager.instance.currLvl;
             PersistantData.skillPointToKeep = gameManager.instance.skillPoint;
-            PersistantData.skillUnlockedCount = SkillManager.instance.count;
+          
             LoadNextlevel();
         }
     }

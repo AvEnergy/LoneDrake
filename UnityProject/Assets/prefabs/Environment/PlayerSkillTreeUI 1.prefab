@@ -230,8 +230,8 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 3966774108009967011}
-    m_SelectOnDown: {fileID: 4971053889342682911}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnDown: {fileID: 3966774108009967011}
+    m_SelectOnLeft: {fileID: 4971053889342682911}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -424,10 +424,10 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 86972210843157098}
-    m_SelectOnDown: {fileID: 3966774108009967011}
+    m_SelectOnUp: {fileID: 4971053889342682911}
+    m_SelectOnDown: {fileID: 4971053889342682911}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 3966774108009967011}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -619,9 +619,9 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 5644298183758137200}
+    m_SelectOnUp: {fileID: 86972210843157098}
     m_SelectOnDown: {fileID: 3606860217019429225}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 5644298183758137200}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -2738,6 +2738,7 @@ MonoBehaviour:
   level_To_Unlock: 
   skillsUnlocked: []
   skills: []
+  count: 0
   displayOn: 0
 --- !u!114 &7517331996421396730
 MonoBehaviour:
@@ -3339,10 +3340,10 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 3606860217019429225}
-    m_SelectOnDown: {fileID: 86972210843157098}
+    m_SelectOnUp: {fileID: 5644298183758137200}
+    m_SelectOnDown: {fileID: 5644298183758137200}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 3606860217019429225}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
