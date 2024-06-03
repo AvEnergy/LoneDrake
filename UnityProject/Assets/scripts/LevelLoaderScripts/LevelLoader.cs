@@ -13,6 +13,7 @@ public class LevelLoader : MonoBehaviour
         {
             PersistantData.XpToKeep = gameManager.instance.XP;
             PersistantData.LevelToKeep = gameManager.instance.currLvl;
+            PersistantData.skillPointToKeep = gameManager.instance.skillPoint;
             LoadNextlevel();
         }
     }

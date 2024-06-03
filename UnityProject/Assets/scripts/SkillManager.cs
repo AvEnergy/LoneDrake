@@ -24,7 +24,8 @@ public class SkillManager : MonoBehaviour
     [SerializeField] GameObject skilltree;    //variable that is the parent of the objects in GetCompenentsInChildren.
     public List<int> level_To_Unlock;        //Simple List that is intialized to create levels.
     public List<string> skillsUnlocked;     //SetSkills will use this store the name's of the objects related to the skill that is being unlocked.
-    public List<SetSkills> skills;         //Used to store objects that have "SetSkills" script.
+    public List<SetSkills> skills;//Used to store objects that have "SetSkills" script.
+    public int count;
 
     [Header("----------------------------------")]
 
@@ -41,6 +42,9 @@ public class SkillManager : MonoBehaviour
         }
         player = GameObject.FindWithTag("Player");
         playerscript = player.GetComponent<playerController>();
+        count = skillsUnlocked.Count;
+
+        count = PersistantData.skillUnlockedCount;
         displayOn = false;
     }
 
@@ -111,6 +115,7 @@ public class SkillManager : MonoBehaviour
     public void SkillMenuOff()
     {
         skillMenu.SetActive(false);
+        displayOn = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         skillMenuActive = null;

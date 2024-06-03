@@ -9,8 +9,15 @@ public class DisplayMessage : MonoBehaviour
 {
     public GameObject DISPLAY_MESSAGE;
     public TMP_Text text;
-    
 
+    private void Start()
+    {
+        
+    }
+    private void Update()
+    {
+       
+    }
     public void OnGameObject()
     {
         foreach (var skill_name in SkillManager.instance.skillsUnlocked)
@@ -52,6 +59,15 @@ public class DisplayMessage : MonoBehaviour
     }
 
   public void OnGameObjectExit()
+    {
+        DISPLAY_MESSAGE.SetActive(false);
+    }
+
+    public void skillsUnlocked()
+    {
+        DISPLAY_MESSAGE.SetActive(true);
+    }
+    public void skillUnlockedExit()
     {
         DISPLAY_MESSAGE.SetActive(false);
     }

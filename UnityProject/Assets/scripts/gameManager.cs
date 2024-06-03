@@ -81,6 +81,7 @@ public class gameManager : MonoBehaviour
             levelText.text = currLvl.ToString();
             playerScript.updatePlayerUI();
         }
+        skillPoint = PersistantData.skillPointToKeep;
     }
 
     // Update is called once per frame
