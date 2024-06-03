@@ -1,32 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class FireBall : MonoBehaviour
+public class WizardProjectile : MonoBehaviour
 {
-    [SerializeField] Rigidbody rb;
+    [SerializeField] Rigidbody RB;
 
     [SerializeField] float speed;
     [SerializeField] int damage;
-    [SerializeField] int destroyTime;
+    [SerializeField] float destroyTime;
 
     bool hitHappened;
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.forward * speed;
+        RB.velocity = transform.forward * speed;
         Destroy(gameObject, destroyTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger || other.CompareTag("Player"))
+        if (other.isTrigger)
         {
             return;
         }
         iDamage other_dmg = other.GetComponent<iDamage>();
-        if (other_dmg != null && !hitHappened && !other.CompareTag("Player"))
+        if (other_dmg != null && !hitHappened)
         {
             other_dmg.takeDamage(damage);
             hitHappened = true;
@@ -37,7 +37,7 @@ public class FireBall : MonoBehaviour
             dmg.IgnoreDamage(damage);
             hitHappened = true;
         }
-        
+
         Destroy(gameObject);
     }
 }

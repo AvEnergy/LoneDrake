@@ -10893,17 +10893,13 @@ MonoBehaviour:
   speed: 5
   facetargetSpeed: 7
   CanShootAttack: 1
-  shootRate: 2
-  CanMeleeAttack: 0
   meleeDmg: 5
   meleeDist: 3
-  cooldownTime: 0
   viewCone: 180
-  meleeAttackCone: 15
   agent: {fileID: 3773686276664305967}
   playertemp: {fileID: 0}
   model: {fileID: 6201271201744119690}
-  FireBall: {fileID: 3773320128948858985, guid: 43d706df469c4c44c88d65ccd4bda96e, type: 3}
+  FireBall: {fileID: 805644900658754945, guid: 73063f33fa1267d45b671258946d5db6, type: 3}
   shootPos: {fileID: 2412624595468325851}
   headPos: {fileID: 5551284957408459311}
   crotchPos: {fileID: 2412624595468325851}
@@ -16680,7 +16676,7 @@ Transform:
   m_GameObject: {fileID: 5540269387700946567}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -2.12, z: 1.93}
+  m_LocalPosition: {x: 0.06, y: -3.89, z: 3.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

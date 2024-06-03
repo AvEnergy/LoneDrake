@@ -177,8 +177,9 @@ public class EnemyWizard : MonoBehaviour, iDamage
     IEnumerator changeColor()
     {
         model.material.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         model.material.color = origColor;
+
     }
 
     IEnumerator damageAnim()
