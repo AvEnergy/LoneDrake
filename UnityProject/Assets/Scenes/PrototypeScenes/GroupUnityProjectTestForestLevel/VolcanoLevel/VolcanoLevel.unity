@@ -534,6 +534,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2570179883878844550, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
+      propertyPath: m_text
+      value: 'Skills Unlocked : '
+      objectReference: {fileID: 0}
     - target: {fileID: 5026724311698535935, guid: 07c22238892725b4f80420f7e6587a1e, type: 3}
       propertyPath: m_Name
       value: PlayerSkillTreeUI 1
